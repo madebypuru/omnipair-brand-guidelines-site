@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>omnipair — brand guidelines</title>
+<meta name="description" content="Omnipair brand guidelines — foundation, verbal identity, logo system, and the full visual system in progress.">
+<style>
+  @font-face {
+    font-family: 'Aeonik';
+    src: url('assets/fonts/AeonikVF.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Aeonik';
+    src: url('assets/fonts/AeonikVF-Italic.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'M Saans';
+    src: url('assets/fonts/MSaansVF.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #F7F7F5;
+    --surface: #FFFFFF;
+    --ink: #121214;
+    --ink-soft: #2A2A2E;
+    --muted: #70707A;
+    --muted-light: #A3A3AA;
+    --line: #E7E7E3;
+    --line-soft: #EFEFEB;
+    --accent: #F08A12;
+    --side-w: 272px;
+  }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    font-family: 'M Saans', system-ui, sans-serif;
+        font-weight: 380;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .mono { font-family: 'M Saans', system-ui, sans-serif; }
+  img { max-width: 100%; display: block; }
+
+  /* ─── SIDEBAR ─── */
+  .side {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: var(--side-w);
+    border-right: 1px solid var(--line);
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem 1rem;
+    z-index: 50;
+    overflow-y: auto;
+  }
+
+  .side-logo { display: block; margin-bottom: 0.75rem; }
+  .side-logo img { width: 128px; height: auto; }
+
+  .side-tagline {
+    font-size: 11px;
+    color: var(--muted-light);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
+  }
+
+  .side-nav { flex: 1; }
+
+  .side-item { margin-bottom: 2px; }
+
+  .side-item > a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 12.5px;
+    font-weight: 480;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 5px 8px;
+    border-radius: 7px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .side-item > a:hover { background: var(--line-soft); color: var(--ink); }
+  .side-item > a.active { background: var(--surface); color: var(--ink); font-weight: 550; box-shadow: 0 0 0 1px var(--line); }
+
+  .side-num {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9.5px;
+    color: var(--muted-light);
+    min-width: 18px;
+  }
+
+  .side-item .side-wip {
+    margin-left: auto;
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+  }
+  .side-item .side-done { margin-left: auto; color: var(--accent); font-size: 10px; }
+
+  .side-sub { list-style: none; margin: 2px 0 8px 26px; border-left: 1px solid var(--line); }
+  .side-sub a {
+    display: block;
+    font-size: 11.5px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 3px 0 3px 12px;
+    margin-left: -1px;
+    border-left: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .side-sub a:hover { color: var(--ink); }
+  .side-sub a.active { color: var(--ink); font-weight: 500; border-left-color: var(--accent); }
+
+  .side-foot {
+    font-size: 10.5px;
+    color: var(--muted-light);
+    line-height: 1.6;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    margin-top: 1rem;
+  }
+
+  /* ─── MAIN ─── */
+  main { margin-left: var(--side-w); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 4rem; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-eyebrow {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-lockup { max-width: 560px; margin: 0 0 2.5rem -2rem; }
+
+  .hero-tag {
+    font-size: clamp(18px, 2.1vw, 24px);
+    font-weight: 380;
+    letter-spacing: -0.02em;
+    color: var(--ink-soft);
+    max-width: 460px;
+    line-height: 1.45;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    max-width: 560px;
+  }
+  .hero-meta-item {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+  }
+  .hero-meta-item strong { display: block; font-size: 12px; color: var(--ink); font-weight: 500; margin-bottom: 3px; letter-spacing: 0; text-transform: none; font-family: 'M Saans', sans-serif; }
+
+  /* ─── CHAPTERS & SECTIONS ─── */
+  .chapter { padding: 5.5rem 0 1.5rem; scroll-margin-top: 1rem; }
+
+  .chapter-head { display: flex; align-items: center; gap: 12px; margin-bottom: 0.75rem; }
+  .chapter-num {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+  .chapter-title {
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 460;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+  .chapter-intro { font-size: 15px; color: var(--muted); max-width: 560px; }
+
+  .sect {
+    padding: 3.25rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    scroll-margin-top: 2rem;
+  }
+  .sect:last-of-type { border-bottom: none; }
+
+  .sect-title {
+    font-size: 20px;
+    font-weight: 520;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .wip-pill {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 3px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-weight: 400;
+    background: var(--surface);
+  }
+  .done-pill {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent);
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .prose {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+    max-width: 620px;
+  }
+  .prose strong { font-weight: 550; color: var(--ink); }
+
+  h4.sub {
+    font-size: 14px;
+    font-weight: 550;
+    letter-spacing: -0.01em;
+    margin: 2.25rem 0 0.9rem;
+  }
+
+  /* WIP placeholder */
+  .wip-block {
+    border: 1px dashed var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin: 1.25rem 0;
+  }
+  .wip-block-title { font-size: 14px; font-weight: 520; margin-bottom: 0.4rem; }
+  .wip-block-desc { font-size: 12.5px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.65; }
+  .wip-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 1.1rem; }
+  .wip-tag {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    padding: 3px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+  }
+
+  /* stance */
+  .stance { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 1.75rem 0; }
+  .stance-col { border-radius: 16px; padding: 1.75rem; }
+  .stance-col.is { background: var(--surface); border: 1px solid var(--line); }
+  .stance-col.against { background: var(--ink); color: #fff; }
+  .stance-label {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.1rem;
+  }
+  .stance-col.against .stance-label { color: rgba(255,255,255,0.45); }
+  .stance-item { font-size: 20px; font-weight: 480; letter-spacing: -0.02em; line-height: 1.4; }
+  .stance-hint { font-size: 12.5px; color: var(--muted); margin-top: 1.1rem; line-height: 1.65; }
+  .stance-col.against .stance-hint { color: rgba(255,255,255,0.55); }
+
+  /* persona */
+  .persona {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 16px;
+    padding: 2rem 2.25rem;
+    margin: 1.5rem 0;
+  }
+  .persona-label {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+  }
+  .persona-text { font-size: 14.5px; line-height: 1.85; color: rgba(255,255,255,0.8); }
+
+  /* tiles */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1.5rem 0; }
+  .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem 1.35rem; }
+  .tile-label {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 0.5rem;
+  }
+  .tile-value { font-size: 13.5px; font-weight: 550; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+  .tile-desc { font-size: 12.5px; line-height: 1.6; color: var(--muted); }
+
+  /* callout */
+  .callout {
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+  }
+  .callout-label {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .callout-text { font-size: 13.5px; line-height: 1.7; color: var(--ink-soft); }
+
+  /* principles */
+  .principle { padding: 1.35rem 0; border-bottom: 1px solid var(--line-soft); }
+  .principle:last-of-type { border-bottom: none; }
+  .principle-name {
+    font-size: 14px;
+    font-weight: 550;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .principle-name::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .principle-desc { font-size: 13.5px; color: var(--muted); padding-left: 15px; }
+
+  /* examples */
+  .example-pair { margin: 1.25rem 0 1.75rem 15px; max-width: 600px; }
+  .ex-label {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .ex-label.avoid { color: #C25353; }
+  .ex-label.use { color: #178A5E; }
+  .ex-box {
+    border-radius: 10px;
+    padding: 0.9rem 1.15rem;
+    font-size: 13px;
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .ex-box.avoid { background: #FCF1F0; border: 1px solid #F0D5D2; color: var(--ink-soft); }
+  .ex-box.use { background: #EFF8F2; border: 1px solid #CFE9DB; color: var(--ink); }
+
+  /* spectrum */
+  .spectrum-row { padding: 1.4rem 0; border-bottom: 1px solid var(--line-soft); }
+  .spectrum-row:last-child { border-bottom: none; }
+  .row-label { font-size: 12.5px; font-weight: 550; margin-bottom: 0.7rem; }
+  .track-wrap { display: grid; grid-template-columns: 90px 1fr 90px; gap: 1rem; align-items: center; }
+  .track-end { font-size: 11px; color: var(--muted); }
+  .track-end.r { text-align: right; }
+  .track { position: relative; height: 4px; border-radius: 2px; background: var(--line); }
+  .track-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 2px; background: var(--accent); }
+  .track-dot {
+    position: absolute; top: 50%;
+    transform: translate(-50%,-50%);
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--ink);
+  }
+  .track-note { font-size: 12px; color: var(--muted); margin-top: 0.6rem; line-height: 1.6; }
+
+  /* vocab */
+  .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1.5rem 0; }
+  .vocab-block { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem; }
+  .vocab-label {
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 0.75rem;
+  }
+  .vocab-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .vtag { font-size: 12px; padding: 4px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; }
+  .vocab-block.no .vtag { background: #FCF1F0; border-color: #F0D5D2; color: #963D3D; }
+
+  /* phrases */
+  .phrase-list { list-style: none; }
+  .phrase-item {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .phrase-item:last-child { border-bottom: none; }
+  .phrase-num { font-family: 'M Saans', system-ui, sans-serif; font-size: 10.5px; color: var(--muted-light); min-width: 22px; }
+  .phrase-text { font-size: 15px; font-weight: 460; letter-spacing: -0.015em; }
+
+  /* templates */
+  .template { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 12px; }
+  .template-head {
+    padding: 0.65rem 1.25rem;
+    border-bottom: 1px solid var(--line-soft);
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--paper);
+  }
+  .template-body { padding: 1.15rem 1.25rem; font-size: 13.5px; line-height: 1.7; }
+  .template-body .formula { font-weight: 550; display: block; margin-bottom: 0.7rem; }
+  .template-body .example {
+    display: block;
+    color: var(--muted);
+    font-size: 12.5px;
+    padding: 0.7rem 1rem;
+    background: var(--paper);
+    border: 1px solid var(--line-soft);
+    border-radius: 8px;
+    margin-bottom: 0.7rem;
+  }
+  .template-body .note { font-size: 12px; color: var(--muted); }
+
+  /* lockup gallery */
+  .lockup-hero {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    margin: 1.5rem 0;
+  }
+  .lockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 1rem 0 1.5rem; }
+  .lockup-grid.three { grid-template-columns: repeat(3, 1fr); }
+  .lockup-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+  .lockup-card img { width: 100%; height: auto; }
+  .lockup-cap {
+    padding: 0.7rem 1rem;
+    font-family: 'M Saans', system-ui, sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 1px solid var(--line-soft);
+  }
+
+  /* rules */
+  .rule-list { list-style: none; margin: 1rem 0; max-width: 620px; }
+  .rule-list li {
+    display: flex;
+    gap: 10px;
+    padding: 0.6rem 0;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line-soft);
+    line-height: 1.6;
+  }
+  .rule-list li:last-child { border-bottom: none; }
+  .rule-list .ok { color: #178A5E; flex-shrink: 0; }
+  .rule-list .no { color: #C25353; flex-shrink: 0; }
+
+
+  .sw { display:inline-block; width:22px; height:22px; border-radius:7px; vertical-align:middle; border:1px solid rgba(0,0,0,0.06); }
+  .spec-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .spec-table th { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-light); text-align: left; font-weight: 500; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--paper); }
+  .spec-table td { padding: 9px 14px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .spec-table tr:last-child td { border-bottom: none; }
+  .formula-box { background: var(--ink); color: #fff; border-radius: 14px; padding: 1.5rem 1.75rem; margin: 1.25rem 0; font-size: 14px; line-height: 2; letter-spacing: 0.01em; }
+  .formula-box .fl { color: rgba(255,255,255,0.5); }
+
+  .dl-bar { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
+  .dl-filters { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .dl-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .dl-group-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-light); font-weight: 500; margin-right: 4px; }
+  .dl-f {
+    font-family: inherit; font-size: 12px; padding: 5px 13px;
+    border-radius: 999px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--muted); cursor: pointer;
+    transition: all 0.15s;
+  }
+  .dl-f.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .dl-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .dl-btn {
+    font-family: inherit; font-size: 12px; font-weight: 500;
+    padding: 9px 18px; border-radius: 999px;
+    border: 1px solid var(--ink); background: var(--surface); color: var(--ink);
+    cursor: pointer; text-decoration: none; display: inline-flex; align-items: center;
+    transition: all 0.15s;
+  }
+  .dl-btn:hover:not(:disabled) { background: var(--line-soft); }
+  .dl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .dl-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .dl-btn.primary:hover { filter: brightness(1.05); background: var(--accent); }
+  .dl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 1.25rem 0; }
+  .dl-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; position: relative; }
+  .dl-card.checked { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .dl-prev { height: 120px; display: grid; place-items: center; padding: 1rem; }
+  .dl-prev.dark { background: var(--ink); }
+  .dl-prev.light { background: var(--paper); }
+  .dl-prev img { max-height: 70px; max-width: 85%; object-fit: contain; }
+  .dl-meta { padding: 0.75rem 1rem; display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--line-soft); }
+  .dl-name { font-size: 11.5px; font-weight: 500; line-height: 1.4; flex: 1; }
+  .dl-name span { display: block; font-weight: 400; color: var(--muted-light); font-size: 10px; letter-spacing: 0.04em; }
+  .dl-check { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; }
+  .dl-get { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; font-weight: 500; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; }
+  .dl-get:hover { color: var(--ink); border-color: var(--ink); }
+  @media (max-width: 980px) { .dl-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+
+  .side-logo.brand { display: flex; align-items: center; gap: 9px; margin-bottom: 2rem; }
+  .brand-icon { width: 30px; height: 30px; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); will-change: transform; }
+  .side-logo.brand:hover .brand-icon { transform: rotate(360deg); }
+  .brand-word { overflow: hidden; width: 104px; display: block; }
+  .brand-word img { width: 128%; margin-left: -26%; display: block; }
+
+  .side-dl {
+    position: sticky;
+    bottom: -1.5rem;
+    background: var(--paper);
+    padding: 0.9rem 0;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .side-dl-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--ink);
+    color: #fff;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 10px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .side-dl-btn:hover { transform: translateY(-1px); background: #000; }
+  .side-dl-ic { color: var(--accent); font-weight: 600; }
+
+  /* brand kit widget */
+  .kit {
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+    padding-top: 1rem;
+    background: linear-gradient(180deg, rgba(247,247,245,0) 0%, var(--paper) 40%);
+    z-index: 120;
+    font-family: 'M Saans', system-ui, sans-serif;
+  }
+  .kit-panel {
+    background: #fff;
+    border: 1px solid var(--line, #E7E7E3);
+    border-radius: 20px;
+    padding: 1.1rem 1.1rem 0.9rem;
+    box-shadow: 0 24px 60px -18px rgba(0,0,0,0.25);
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.25s cubic-bezier(0.22,1,0.36,1), transform 0.25s cubic-bezier(0.22,1,0.36,1);
+  }
+  .kit.open .kit-panel { opacity: 1; transform: none; pointer-events: auto; }
+  .kit-title { font-size: 14px; font-weight: 600; color: #121214; letter-spacing: -0.01em; }
+  .kit-sub { font-size: 11.5px; color: #70707A; line-height: 1.5; margin: 2px 0 0.9rem; }
+  .kit-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #F7F7F5;
+    border: 1px solid #EFEFEB;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 7px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .kit-row:hover { border-color: #d9d9d3; }
+  .kit-row.sel { border-color: #F08A12; }
+  .kit-row input { accent-color: #F08A12; width: 15px; height: 15px; cursor: pointer; }
+  .kit-row-name { font-size: 12.5px; font-weight: 500; color: #121214; flex: 1; }
+  .kit-row-name span { color: #A3A3AA; font-weight: 400; font-size: 10.5px; margin-left: 4px; }
+  .kit-row-dl {
+    color: #F08A12;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1;
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+  .kit-row-dl:hover { background: rgba(240,138,18,0.12); }
+  .kit-cta {
+    display: flex;
+    width: 100%;
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: 0 14px 34px -12px rgba(0,0,0,0.4);
+  }
+  .kit-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #121214;
+    color: #fff;
+    border: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 550;
+    padding: 13px 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .kit-main:hover { background: #000; }
+  .kit-main .dl-ic { color: #F08A12; }
+  .kit-toggle {
+    background: #121214;
+    color: rgba(255,255,255,0.75);
+    border: none;
+    border-left: 1px solid rgba(255,255,255,0.15);
+    font-family: inherit;
+    font-size: 11px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+  }
+  .kit-toggle:hover { background: #000; color: #fff; }
+  .kit-toggle .chev { display: inline-flex; align-items: center; transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+  .kit.open .kit-toggle .chev { transform: rotate(180deg); }
+  @media (max-width: 980px) {
+    .kit { position: fixed; left: 50%; bottom: 1rem; transform: translateX(-50%); width: min(340px, calc(100vw - 2rem)); margin-top: 0; padding-top: 0; background: transparent; }
+  }
+  .statement-lead {
+    font-size: clamp(18px, 2.2vw, 23px);
+    font-weight: 480;
+    letter-spacing: -0.025em;
+    line-height: 1.4;
+    color: var(--ink);
+    max-width: 680px;
+    margin-bottom: 1.25rem;
+  }
+  /* brandbook 2026 additions */
+  .icon-tile { display: grid; place-items: center; padding: 1.5rem; background: var(--paper); }
+  .icon-tile img { width: 60%; max-width: 220px; }
+  .ramps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 1.5rem 0; }
+  .ramp { display: flex; flex-direction: column; gap: 5px; }
+  .ramp-name { font-size: 12px; font-weight: 550; margin-bottom: 4px; }
+  .chip { min-height: 52px; border-radius: 10px; padding: 8px 11px; display: flex; flex-direction: column; justify-content: space-between; font-size: 11px; line-height: 1.2; color: #13100D; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); }
+  .chip b { font-weight: 600; font-size: 12px; }
+  .chip span { text-transform: uppercase; opacity: .7; cursor: pointer; }
+  .chip.inv { color: #fff; }
+  .neut { display: grid; grid-template-columns: 1fr 1fr; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); margin: 1.5rem 0; }
+  .neut-cell { padding: 22px 24px; min-height: 104px; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; font-size: 12px; }
+  .neut-cell b { font-weight: 600; font-size: 13px; }
+  .neut-cell span { text-transform: uppercase; opacity: .7; cursor: pointer; }
+  .neut-cell.inv { color: #fff; }
+  .type-spec { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 2.25rem 2.5rem 2.75rem; margin: 1.5rem 0; color: #1E1A17; }
+  .type-spec.mono-spec, .type-spec.mono-spec * { font-family: 'Saans SemiMono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+  .type-spec-top { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+  .type-word { font-size: clamp(34px, 4.2vw, 52px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 400; }
+  .type-role { margin-top: 1.5rem; font-size: clamp(24px, 2.8vw, 36px); line-height: 1.1; letter-spacing: -0.015em; font-weight: 400; }
+  .type-family { margin-top: 6px; font-size: 14px; color: var(--muted); }
+  .type-para { font-size: 14px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+  .type-spec-bottom { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); gap: 2.5rem; align-items: center; padding-top: 2rem; }
+  .type-aa { font-size: clamp(96px, 13vw, 180px); line-height: .9; letter-spacing: -0.03em; color: #3A3532; font-weight: 400; }
+  .type-glyphs { display: grid; grid-template-columns: repeat(9, minmax(0,1fr)); gap: 14px 4px; font-size: clamp(14px, 1.6vw, 24px); line-height: 1; text-align: center; }
+  .prompt-details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; margin: 1.25rem 0; overflow: hidden; }
+  .prompt-details summary { display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 0.9rem 1.25rem; font-size: 13.5px; font-weight: 550; list-style: none; }
+  .prompt-details summary::-webkit-details-marker { display: none; }
+  .prompt-details summary::before { content: '›'; display: inline-block; transition: transform .2s; color: var(--muted); }
+  .prompt-details[open] summary::before { transform: rotate(90deg); }
+  .prompt-details pre { font-family: 'Saans SemiMono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; padding: 1rem 1.25rem 1.25rem; border-top: 1px solid var(--line-soft); color: var(--ink-soft); max-height: 460px; overflow: auto; margin: 0; }
+  @media (max-width: 980px) { .ramps { grid-template-columns: 1fr; } .type-spec-top, .type-spec-bottom { grid-template-columns: 1fr; } .type-glyphs { grid-template-columns: repeat(6, minmax(0,1fr)); } }
+  footer { border-top: 1px solid var(--line); padding: 2.5rem 0 3rem; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .foot-logo img { width: 110px; height: auto; }
+  .foot-meta { font-family: 'M Saans', system-ui, sans-serif; font-size: 10.5px; color: var(--muted-light); }
+
+  /* mobile */
+  .mobile-bar { display: none; }
+
+  @media (max-width: 980px) {
+    .side { display: none; }
+    main { margin-left: 0; }
+    .wrap { padding: 0 1.5rem; }
+    .mobile-bar {
+      display: flex;
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(247,247,245,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      padding: 0.8rem 1.5rem;
+      align-items: center;
+      gap: 10px;
+    }
+    .mobile-bar img { width: 96px; height: auto; }
+    .mobile-bar span { font-family: 'M Saans', system-ui, sans-serif; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-light); }
+    .hero { min-height: 60vh; }
+    .hero-lockup { margin-left: -1rem; }
+    .stance, .grid2, .vocab-grid, .lockup-grid, .lockup-grid.three { grid-template-columns: 1fr; }
+    .track-wrap { grid-template-columns: 70px 1fr 70px; }
+    .hero-meta { flex-wrap: wrap; gap: 1.25rem; }
+    .foot-inner { flex-direction: column; }
+  }
+
+  /* lightbox */
+  .lb {
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(10,10,12,0.82);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    display: grid; place-items: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding: 3vh 3vw;
+    cursor: zoom-out;
+  }
+  .lb.open { opacity: 1; pointer-events: auto; }
+  .lb img {
+    max-width: 94vw; max-height: 88vh;
+    width: auto; height: auto;
+    border-radius: 14px;
+    box-shadow: 0 40px 120px -20px rgba(0,0,0,0.6);
+    transform: scale(0.96);
+    transition: transform 0.25s cubic-bezier(0.22,1,0.36,1);
+  }
+  .lb.open img { transform: scale(1); }
+  .lb-hint {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-family: 'M Saans', system-ui, sans-serif; font-size: 9.5px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .zoomable { cursor: zoom-in; }
+  .chapter-title, .sect-title, .hero-tag, .stance-item, .phrase-text, .persona-text, .tile-value, .gp-big, .wip-block-title, .opt-title { font-family: 'Aeonik', 'M Saans', sans-serif; }
+  [data-copy] { cursor: pointer; transition: color 0.15s; }
+  [data-copy]:hover { color: var(--accent); }
+  .copy-toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(8px); background: var(--ink); color: #fff; font-size: 11px; letter-spacing: 0.04em; padding: 7px 16px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 300; }
+  .copy-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#4D95FA">
+</head>
+<body>
+
+<div class="mobile-bar">
+  <a href="#top" class="side-logo" style="margin:0;">
+    <img src="assets/downloads/Omnipair-Horizontal-DarkSilver-SVG.svg" alt="omnipair" style="width:110px;">
+  </a>
+  
+</div>
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="side">
+  <a href="#top" class="side-logo">
+    <img src="assets/downloads/Omnipair-Horizontal-DarkSilver-SVG.svg" alt="omnipair" style="width:132px;">
+  </a>
+
+  <nav class="side-nav">
+    <div class="side-item">
+      <a href="#foundation"><span class="side-num">01</span>Brand Foundation</a>
+      <ul class="side-sub">
+        <li><a href="#hero-enemy">Hero & Enemy</a></li>
+        <li><a href="#what">What is Omnipair?</a></li>
+        <li><a href="#narrative">Core Narrative</a></li>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#idea">The Omnipair Idea</a></li>
+        <li><a href="#belief">Brand Belief</a></li>
+        <li><a href="#mission">Mission & Vision</a></li>
+        <li><a href="#positioning">Positioning</a></li>
+        <li><a href="#promise">Brand Promise</a></li>
+        <li><a href="#audience">Audience</a></li>
+        <li><a href="#character">Personality & Character</a></li>
+        <li><a href="#stand-against">What We Stand Against</a></li>
+        <li><a href="#principles">Brand Principles</a></li>
+        <li><a href="#moodboard">Visual Territory</a></li>
+      </ul>
+    </div>
+
+    <div class="side-item">
+      <a href="#verbal"><span class="side-num">02</span>Verbal Identity</a>
+      <ul class="side-sub">
+        <li><a href="#verbal-intro">Introduction</a></li>
+        <li><a href="#core-message">Core Message</a></li>
+        <li><a href="#messaging">Messaging Hierarchy</a></li>
+        <li><a href="#pitch">Elevator Pitch</a></li>
+        <li><a href="#descriptions">Brand Description</a></li>
+        <li><a href="#tagline">Tagline</a></li>
+        <li><a href="#value-props">Value Propositions</a></li>
+        <li><a href="#by-audience">Message by Audience</a></li>
+        <li><a href="#tone">Tone of Voice</a></li>
+        <li><a href="#writing-principles">Writing Principles</a></li>
+        <li><a href="#calibration">Voice Spectrum</a></li>
+        <li><a href="#copy-styles">Copy Styles</a></li>
+        <li><a href="#vocabulary">Terminology</a></li>
+        <li><a href="#naming">Capitalisation & Naming</a></li>
+        <li><a href="#phrases">Signature Phrases</a></li>
+        <li><a href="#templates">Example Copy</a></li>
+      </ul>
+    </div>
+
+    <div class="side-item">
+      <a href="#logo"><span class="side-num">03</span>Logo System<span class="side-done">●</span></a>
+      <ul class="side-sub">
+        <li><a href="#lockups">Primary Lockups</a></li>
+        <li><a href="#symbol">The Symbol</a></li>
+        <li><a href="#wordmark">Wordmark Rationale</a></li>
+        <li><a href="#hierarchy">Lockup Hierarchy</a></li>
+        <li><a href="#construction">Construction</a></li>
+        <li><a href="#optical">Optical Centring</a></li>
+        <li><a href="#clearspace">Clear Space</a></li>
+        <li><a href="#minsize">Minimum Size</a></li>
+        <li><a href="#misuse">Misuse</a></li>
+        <li><a href="#app-icons">App Icons</a></li>
+      </ul>
+    </div>
+
+    <div class="side-item">
+      <a href="#colour"><span class="side-num">04</span>Colour<span class="side-done">●</span></a>
+      <ul class="side-sub">
+        <li><a href="#inspiration">Palette Inspiration</a></li>
+        <li><a href="#sky-axis">The Sky Axis</a></li>
+        <li><a href="#palette-sky">Sky Palette</a></li>
+        <li><a href="#palette-dawn">Dawn Palette</a></li>
+        <li><a href="#palette-aqua">Aqua Palette</a></li>
+        <li><a href="#shades">Primary Colour Shades</a></li>
+        <li><a href="#neutrals">Neutral Colours</a></li>
+        <li><a href="#palettes-in-use">Palettes in Use</a></li>
+      </ul>
+    </div>
+    <div class="side-item">
+      <a href="#typography"><span class="side-num">05</span>Typography<span class="side-done">●</span></a>
+      <ul class="side-sub">
+        <li><a href="#type-primary">M Saans — Primary</a></li>
+        <li><a href="#type-secondary">Saans SemiMono — Secondary</a></li>
+      </ul>
+    </div>
+    <div class="side-item"><a href="#layout"><span class="side-num">06</span>Layout System<span class="side-wip">wip</span></a></div>
+    <div class="side-item">
+      <a href="#graphic"><span class="side-num">07</span>Graphic System<span class="side-wip">partial</span></a>
+      <ul class="side-sub">
+        <li><a href="#shader">Dither Shader</a></li>
+      </ul>
+    </div>
+    <div class="side-item"><a href="#glass"><span class="side-num">08</span>Engineered Glass<span class="side-wip">wip</span></a></div>
+    <div class="side-item">
+      <a href="#diagrams"><span class="side-num">09</span>Technical Diagrams<span class="side-wip">partial</span></a>
+      <ul class="side-sub">
+        <li><a href="#explainers">Explainer Graphics</a></li>
+      </ul>
+    </div>
+    <div class="side-item"><a href="#iconography"><span class="side-num">10</span>Iconography<span class="side-wip">wip</span></a></div>
+    <div class="side-item">
+      <a href="#photography"><span class="side-num">11</span>Imagery<span class="side-done">●</span></a>
+      <ul class="side-sub">
+        <li><a href="#territory">Visual Territory</a></li>
+        <li><a href="#environments">Environments</a></li>
+        <li><a href="#prompt-formula">Prompt Formula</a></li>
+        <li><a href="#references">References &amp; Outputs</a></li>
+      </ul>
+    </div>
+    <div class="side-item"><a href="#motion"><span class="side-num">12</span>Motion<span class="side-wip">wip</span></a></div>
+    <div class="side-item"><a href="#product"><span class="side-num">13</span>Product Identity<span class="side-wip">wip</span></a></div>
+    <div class="side-item">
+      <a href="#applications"><span class="side-num">14</span>Applications<span class="side-wip">partial</span></a>
+      <ul class="side-sub">
+        <li><a href="#social">Social Media</a></li>
+        <li><a href="#merch">Merchandise &amp; Graphics</a></li>
+      </ul>
+    </div>
+    <div class="side-item"><a href="#assets"><span class="side-num">15</span>Asset Library<span class="side-done">●</span></a></div>
+    <div class="side-item" style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line);"><a href="marketing.html"><span class="side-num">→</span>At a Glance — marketing one-pager</a></div>
+    <div class="side-item"><a href="roadmap.html"><span class="side-num">→</span>Roadmap & Future Additions</a></div>
+  </nav>
+
+  <div class="side-foot">
+    omnipair.fi<br>
+    brand guidelines · v3.1<br>
+    synced with brandbook 2026
+  </div>
+
+  <!-- brand kit widget -->
+  <div class="kit" id="kit">
+    <div class="kit-panel" role="dialog" aria-label="Brand kit assets">
+      <div class="kit-title">Brand kit assets</div>
+      <div class="kit-sub">Download one bundle at a time or select several bundles and export them together.</div>
+      <label class="kit-row"><input type="checkbox" data-zip="Omnipair-Horizontal-Pack.zip"><span class="kit-row-name">Horizontal lockup <span>svg · png · jpg</span></span><a class="kit-row-dl" href="assets/downloads/Omnipair-Horizontal-Pack.zip" download title="Download horizontal pack"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></a></label>
+      <label class="kit-row"><input type="checkbox" data-zip="Omnipair-Vertical-Pack.zip"><span class="kit-row-name">Vertical lockup <span>svg · png · jpg</span></span><a class="kit-row-dl" href="assets/downloads/Omnipair-Vertical-Pack.zip" download title="Download vertical pack"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></a></label>
+      <label class="kit-row"><input type="checkbox" data-zip="Omnipair-Icon-Pack.zip"><span class="kit-row-name">Icon <span>svg · png · jpg</span></span><a class="kit-row-dl" href="assets/downloads/Omnipair-Icon-Pack.zip" download title="Download icon pack"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></a></label>
+      <label class="kit-row"><input type="checkbox" data-zip="Omnipair-Fonts-Pack.zip"><span class="kit-row-name">Fonts <span>aeonik · m saans</span></span><a class="kit-row-dl" href="assets/downloads/Omnipair-Fonts-Pack.zip" download title="Download fonts pack"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></a></label>
+      <label class="kit-row"><input type="checkbox" data-zip="Omnipair-Colours.md"><span class="kit-row-name">Colour tokens <span>.md</span></span><a class="kit-row-dl" href="assets/downloads/Omnipair-Colours.md" download title="Download colour tokens"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></a></label>
+      <label class="kit-row"><input type="checkbox" data-zip="Omnipair-AppIcons-Pack.zip"><span class="kit-row-name">App icons <span>leverage · lending · trade</span></span><a class="kit-row-dl" href="assets/downloads/Omnipair-AppIcons-Pack.zip" download title="Download app icons"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></a></label>
+      <label class="kit-row"><input type="checkbox" data-zip="Omnipair-Social-Pack.zip"><span class="kit-row-name">Social assets <span>discord · x · linkedin · github</span></span><a class="kit-row-dl" href="assets/downloads/Omnipair-Social-Pack.zip" download title="Download social assets"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></a></label>
+    <label class="kit-row"><input type="checkbox" data-zip="Omnipair-Logo-Pack.zip"><span class="kit-row-name">Complete pack <span>all 24 files</span></span><a class="kit-row-dl" href="assets/downloads/Omnipair-Logo-Pack.zip" download title="Download complete pack"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></a></label>
+    </div>
+    <div class="kit-cta">
+      <button class="kit-main" id="kitMain"><span class="dl-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></span> Download Brand Kit</button>
+      <button class="kit-toggle" id="kitToggle" aria-expanded="false" aria-label="Choose bundles"><span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button>
+    </div>
+  </div>
+</aside>
+
+<main id="top">
+
+  <!-- ─── HERO ─── -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-eyebrow">BRAND GUIDELINES — V3.1 · SYNCED WITH BRANDBOOK 2026</div>
+      <img class="hero-lockup" src="assets/lockups/horizontal-black-light.png" alt="omnipair logo — horizontal lockup">
+      <p class="hero-tag">everything your money can do, radiating from one point.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><strong>15 chapters</strong>structure</div>
+        <div class="hero-meta-item"><strong>Logo · Colour · Type · Imagery</strong>complete</div>
+        <div class="hero-meta-item"><strong>Living document</strong>status</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <!-- ─── 01 BRAND FOUNDATION ─── -->
+    <section class="chapter" id="foundation">
+      <div class="chapter-head"><span class="chapter-num">01</span></div>
+      <h1 class="chapter-title">brand foundation</h1>
+      <p class="chapter-intro">The logic behind the identity — what Omnipair is, the gap it fills, and the character behind every word.</p>
+    </section>
+
+<section class="sect" id="hero-enemy">
+      <h2 class="sect-title">Hero & Enemy</h2>
+      <p class="prose">Every strong brand stands for something — and against something. Omnipair's identity is defined by what it builds and what it refuses to accept.</p>
+      <div class="stance">
+        <div class="stance-col is">
+          <div class="stance-label">Omnipair is</div>
+          <div class="stance-item">Money Market</div>
+          <div class="stance-item">Permissionless Finance Layer</div>
+          <div class="stance-hint">A market for every asset. A layer anyone can build on. No approvals required.</div>
+        </div>
+        <div class="stance-col against">
+          <div class="stance-label">Omnipair stands against</div>
+          <div class="stance-item">Complexity</div>
+          <div class="stance-item">Closed Markets</div>
+          <div class="stance-hint">Poor UX, fragmented capital, and reliance on unnecessary intermediaries. We reject them all.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sect" id="what">
+      <h2 class="sect-title">What is Omnipair?</h2>
+      <p class="statement-lead">Omnipair is an oracleless margin protocol on Solana that transforms every SPL pair into a unified market — swaps, lending, leverage, and liquidations inside one isolated pool.</p>
+      <p class="prose">In DeFi today, trading and lending are separate apps. Lending apps have a hard requirement: an external price feed (an oracle) to know what collateral is worth — and only a few dozen tokens have reliable ones.</p>
+      <p class="prose">Omnipair merges trading and lending into one system that needs no external price feed. <strong>Each pool is its own tiny bank:</strong> it sets the price, holds the liquidity, funds the loans, and handles the failures — all locally.</p>
+      <div class="callout">
+        <div class="callout-label">The architecture</div>
+        <div class="callout-text">The <strong>GAMM</strong> — Generalized Automated Market Maker. Where an AMM only trades, a GAMM trades, lends, and levers.</div>
+      </div>
+    </section>
+
+<section class="sect" id="narrative">
+      <h2 class="sect-title">Core Narrative</h2>
+      <p class="prose">The financial system is full of gatekeepers. Listings. Oracles. Governance committees. Approvals.</p>
+      <p class="prose"><strong>Omnipair removes them.</strong></p>
+      <p class="prose">By enabling permissionless borrowing, lending, and leverage through a unified market structure, Omnipair gives every asset access to financial utility.</p>
+      <div class="callout">
+        <div class="callout-label">The goal</div>
+        <div class="callout-text">Not to improve existing markets — to build a better standard.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="problem">
+      <h2 class="sect-title">The Problem</h2>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">01</div><div class="tile-value">Fragmented markets</div><div class="tile-desc">What should be one market takes three protocols — a DEX to swap, a lending app to borrow, a perp venue for leverage. Users juggle all of them.</div></div>
+        <div class="tile"><div class="tile-label">02</div><div class="tile-value">Gatekept access</div><div class="tile-desc">Lending is oracle-gated and governance-whitelisted. Out of tens of thousands of actively traded tokens, only a few dozen qualify.</div></div>
+        <div class="tile"><div class="tile-label">03</div><div class="tile-value">Dead capital</div><div class="tile-desc">Tokens sit idle. Holders can't borrow against them, LP them profitably, or do anything but sell.</div></div>
+        <div class="tile"><div class="tile-label">04</div><div class="tile-value">Exhausting experience</div><div class="tile-desc">Even sophisticated users are worn out by DeFi's fragmentation — bridging, juggling apps, decoding oracle risk, fearing liquidation cascades.</div></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">The scale of the lockout</div>
+        <div class="callout-text"><strong>~78%</strong> of Solana DEX volume is in tokens under $100M market cap. <strong>~95%</strong> under $1B — all locked out of lending, borrowing, and leverage entirely.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="idea">
+      <h2 class="sect-title">The Omnipair Idea</h2>
+      <p class="statement-lead">Every asset. Every use case. One unified pool.</p>
+      <p class="prose"><strong>One engine for every use case:</strong> unified money markets for every asset on Solana. Each pool prices its own assets, funds its own loans, and absorbs its own failures.</p>
+    </section>
+
+    <section class="sect" id="belief">
+      <h2 class="sect-title">Brand Belief</h2>
+      <div class="persona" style="margin-top:0.5rem;">
+        <div class="persona-label">The belief Omnipair operates from</div>
+        <div class="persona-text" style="font-size:24px; letter-spacing:-0.03em; line-height:1.35;">"If liquidity exists, the market exists."</div>
+      </div>
+      <p class="prose">A market shouldn't wait on an oracle integration, a listing committee, or a governance vote. Liquidity is the only prerequisite.</p>
+    </section>
+
+    <section class="sect" id="mission">
+      <h2 class="sect-title">Mission &amp; Vision</h2>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">Mission</div><div class="tile-desc" style="font-size:14px; color:var(--ink-soft);">Give every asset on Solana a full financial ecosystem — collateral, borrowing, leverage, and yield — permissionlessly. Unlock the long tail no other venue can serve.</div></div>
+        <div class="tile"><div class="tile-label">Vision</div><div class="tile-desc" style="font-size:14px; color:var(--ink-soft);">The margin layer for internet capital markets. The new standard for DeFi: powerful underneath, calm on the surface.</div></div>
+      </div>
+    </section>
+
+    <section class="sect" id="positioning">
+      <h2 class="sect-title">Positioning</h2>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">What Omnipair is</div><div class="tile-value">The GAMM — one pool that trades, lends, and levers.</div></div>
+        <div class="tile"><div class="tile-label">Category</div><div class="tile-value">A new primitive</div><div class="tile-desc">Not another DEX, not another lending market. GAMM is the category-defining term, treated the way early Uniswap treated "AMM."</div></div>
+      </div>
+      <h4 class="sub">How it differs from conventional money markets</h4>
+      <table class="spec-table">
+        <thead><tr><th>Conventional money markets</th><th>Omnipair</th></tr></thead>
+        <tbody>
+          <tr><td>Require oracles</td><td>No oracles, anywhere in the system</td></tr>
+          <tr><td>Gatekeep via listing committees and whitelists</td><td>Markets created permissionlessly, for any SPL pair</td></tr>
+          <tr><td>Pool risk, so failures spread</td><td>Markets are isolated — failures stay local</td></tr>
+          <tr><td>Value collateral at theoretical oracle prices</td><td>Values it at what the market could actually recover by selling</td></tr>
+          <tr><td>Structurally cannot serve sub-$1B assets</td><td>That market is the beachhead — nobody else can serve it</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sect" id="promise">
+      <h2 class="sect-title">Brand Promise</h2>
+      <p class="prose">What users can consistently expect:</p>
+      <ul class="rule-list">
+        <li><span class="ok">✓</span>Any SPL token pair, permissionlessly — no gatekeepers, no waiting.</li>
+        <li><span class="ok">✓</span>No oracles anywhere in the system.</li>
+        <li><span class="ok">✓</span>Isolated markets — one failure can never spread.</li>
+        <li><span class="ok">✓</span>Honest pricing — real costs upfront, collateral valued at real recoverable depth, no fake liquidation prices.</li>
+        <li><span class="ok">✓</span>Risk made local and explicit — <strong>we promise containment, not the absence of risk.</strong></li>
+      </ul>
+    </section>
+
+    <section class="sect" id="audience">
+      <h2 class="sect-title">Audience</h2>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">Token teams &amp; projects</div><div class="tile-desc">Long-tail Solana tokens locked out of listings; want collateral and leverage utility for their token, today.</div></div>
+        <div class="tile"><div class="tile-label">Whales &amp; LPs</div><div class="tile-desc">Deep bags and yield seekers; want dual yield (swap fees + borrow interest) from one deposit, without selling.</div></div>
+        <div class="tile"><div class="tile-label">Holders &amp; borrowers</div><div class="tile-desc">Conviction holders who need liquidity without selling, or want to long/short tokens no other venue supports.</div></div>
+        <div class="tile"><div class="tile-label">Traders &amp; degens</div><div class="tile-desc">Want leverage on the long tail, where no perp exists.</div></div>
+        <div class="tile"><div class="tile-label">DeFi power users &amp; analysts</div><div class="tile-desc">Skeptics who read everything critically; need proof the design is sound.</div></div>
+        <div class="tile" style="background:var(--ink); border-color:var(--ink);"><div class="tile-label" style="color:rgba(255,255,255,0.45);">Cross-cutting — the DeFi-overwhelmed</div><div class="tile-desc" style="color:rgba(255,255,255,0.72);">Not a segment but a posture that applies to everyone — one pool, one position, one surface.</div></div>
+      </div>
+
+      <h4 class="sub">Audience priorities</h4>
+      <ul class="rule-list">
+        <li><span class="ok">✓</span><strong>Supply side first.</strong> Token teams, whales, and LPs seed and deepen markets — demand has nowhere to go without liquid markets. BD leads with token teams; one team unlocks many users.</li>
+        <li><span class="ok">✓</span><strong>Analysts are the amplifiers.</strong> Winning them over is how the brand wins every other segment at scale. Content for them is precise, whitepaper-linked, and never overclaims.</li>
+      </ul>
+      <div class="callout">
+        <div class="callout-label">The flywheel</div>
+        <div class="callout-text">Teams deploy markets → whales and LPs deepen them → borrowing and leverage become viable → interest and fees attract more capital → live, useful markets recruit the next token.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="character">
+      <h2 class="sect-title">Brand Personality &amp; Character</h2>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">Personality</div><div class="tile-value" style="font-size:16px;">Rational. Confident. Visionary.</div></div>
+        <div class="tile"><div class="tile-label">Character</div><div class="tile-value" style="font-size:16px;">Technical. Refined. Independent.</div></div>
+      </div>
+
+      <h4 class="sub">The brand prism</h4>
+      <table class="spec-table">
+        <thead><tr><th>Facet</th><th>Traits</th></tr></thead>
+        <tbody>
+          <tr><td>Physique</td><td>Technical, Refined, Supreme</td></tr>
+          <tr><td>Personality</td><td>Rational, Confident, Visionary</td></tr>
+          <tr><td>Culture</td><td>Inventive, Ownership, Transparency</td></tr>
+          <tr><td>Relationship</td><td>Control, Reliability, Opportunity</td></tr>
+          <tr><td>Reflection</td><td>Strategists, Long-Term Thinkers, Early Adopters</td></tr>
+          <tr><td>Self-image</td><td>Independent, Confident, Capable</td></tr>
+        </tbody>
+      </table>
+      <div class="lockup-hero" style="background:var(--surface); padding:1.5rem 2rem;">
+        <img loading="lazy" src="assets/foundation/brand-prism.png" alt="Kapferer brand prism for Omnipair — physique, personality, culture, relationship, reflection and self-image arranged around the star">
+      </div>
+      <p class="prose" style="font-size:13.5px; color:var(--muted);">The Omnipair brand identity is built on Kapferer's brand prism — six interconnected facets that define how the brand presents itself and how it is perceived. From its technical, refined physique to its rational, visionary personality, each dimension reinforces a unified promise of control, reliability, and opportunity.</p>
+
+<div class="persona">
+        <div class="persona-label">The Omnipair person — your north star</div>
+        <div class="persona-text">"A sharp, self-assured architect in their early 30s. Shows up in a Porsche wearing a well-cut jacket and unbranded designer pants — premium, but no logos. Calm and precise, never loud. Has strong opinions about how on-chain finance should work and voices them as reasoned arguments, not insults. A quiet rebel rejecting the status quo through what they build rather than how loudly they complain. Doesn't ask for your trust — would rather you verify everything yourself. Ships only what matters."</div>
+      </div>
+    </section>
+
+    <section class="sect" id="stand-against">
+      <h2 class="sect-title">What We Stand Against</h2>
+      <ul class="rule-list">
+        <li><span class="no">✕</span><strong>Oracles</strong> — external price feeds as a condition for a market to exist.</li>
+        <li><span class="no">✕</span><strong>Gatekeepers</strong> — listing committees, governance whitelists, risk committees that never prioritize the long tail.</li>
+        <li><span class="no">✕</span><strong>Fragmented capital</strong> — value split across single-purpose protocols.</li>
+        <li><span class="no">✕</span><strong>Hidden risk</strong> — shared pools where one failure bleeds everywhere, fake liquidation prices, systems that pretend liquidity exists when it doesn't.</li>
+        <li><span class="no">✕</span><strong>Intermediaries</strong> — trusted third parties the system doesn't need.</li>
+        <li><span class="no">✕</span><strong>Hype</strong> — "no risk," guaranteed returns, safety-certainty language.</li>
+      </ul>
+
+      <h4 class="sub">How Omnipair challenges the market</h4>
+      <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="tile"><div class="tile-value">It finds the structural gap</div><div class="tile-desc">The 95% of tokens that oracle-gated money markets structurally cannot provide for — the market nobody else can serve.</div></div>
+        <div class="tile"><div class="tile-value">It builds what the market assumes is unsafe</div><div class="tile-desc">Oracleless lending has a rocky history; skeptics assume it can't work until shown otherwise. The answer is mechanical: one auditable equation, impact-aware collateral, isolated risk.</div></div>
+        <div class="tile"><div class="tile-value">Confident, never hypey</div><div class="tile-desc">The credibility asset is unusual honesty about limitations. In a post-exploit market, the brand markets containment — risk made local and explicit — not the absence of risk.</div></div>
+      </div>
+    </section>
+
+    <section class="sect" id="principles">
+      <h2 class="sect-title">Brand Principles</h2>
+      <div class="principle">
+        <div class="principle-name">Lead with the outcome, not the machinery</div>
+        <div class="principle-desc">"Get liquidity without selling" before GAMM, EMA, or virtual reserves. Save deep mechanics for docs and the audience that asks.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">Trust through simplicity</div>
+        <div class="principle-desc">Powerful underneath, calm on the surface — complexity handled by the machine, not the user.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">Prefer proof over adjectives</div>
+        <div class="principle-desc">Precise language, whitepaper-linked, never overclaim. What you see is what you get.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">Risk made local and explicit</div>
+        <div class="principle-desc">Market containment, not the absence of risk. Never pretend liquidity exists when it doesn't.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="moodboard">
+      <h2 class="sect-title">Visual Territory — Mood Board <span class="done-pill">live</span></h2>
+      <p class="prose">This mood board captures the visual and conceptual territory of the Omnipair brand — a convergence of <strong>bold builders, liminal leaders, and gentle humanists</strong>. These references inform the brand's tone across all touchpoints, grounding its identity in modular confidence and inventive clarity.</p>
+      <div class="lockup-hero" style="background:var(--surface); padding:1.5rem 2rem; display:grid; place-items:center;">
+        <img loading="lazy" src="assets/foundation/moodboard.jpg" alt="Mood board mapping AI and infrastructure brands on speculative–familiar and human–technical axes, with Omnipair's territory outlined across Bold Builders, Likeable Leaders and Gentle Humanists" style="max-width:640px;">
+      </div>
+    </section>
+
+    <section class="chapter" id="verbal">
+      <div class="chapter-head"><span class="chapter-num">02</span></div>
+      <h1 class="chapter-title">verbal identity</h1>
+      <p class="chapter-intro">Omnipair's voice is its personality made audible — delivered with the character of the brand.</p>
+    </section>
+
+    <section class="sect" id="verbal-intro">
+      <h2 class="sect-title">Introduction</h2>
+      <p class="prose">Omnipair's voice is its personality made audible: <strong>rational, confident, visionary</strong> — delivered with the character of the brand: <strong>technical, refined, independent</strong>.</p>
+      <div class="callout">
+        <div class="callout-label">The governing rule</div>
+        <div class="callout-text">Confident but never hypey. The credibility asset is unusual honesty about limitations. <strong>We market containment, not the absence of risk.</strong></div>
+      </div>
+    </section>
+
+    <section class="sect" id="core-message">
+      <h2 class="sect-title">Core Message</h2>
+      <p class="prose">The one line every communication ladders up to:</p>
+      <div class="persona" style="margin-top:0.5rem;">
+        <div class="persona-label">Core message</div>
+        <div class="persona-text" style="font-size:19px; letter-spacing:-0.02em; line-height:1.5;">"Every pair is its own bank. Omnipair turns any token pair into a self-contained market with trading, lending, and spot leverage in one — no oracles, no gatekeepers."</div>
+      </div>
+    </section>
+
+    <section class="sect" id="messaging">
+      <h2 class="sect-title">Messaging Hierarchy</h2>
+      <table class="spec-table">
+        <thead><tr><th>Level</th><th>Message</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Brand</strong></td><td>Every pair is its own bank.</td></tr>
+          <tr><td><strong>Product</strong></td><td>Trade, borrow and leverage any asset without permission.<br>Unified money markets for every asset on Solana.</td></tr>
+          <tr><td><strong>Feature</strong></td><td><strong>hLP:</strong> Deposit one token. Keep your exposure. Earn fees and interest.<br><strong>Spot margin:</strong> Long or short any token. Leverage where no perp exists.<br><strong>Rates:</strong> Markets run themselves.</td></tr>
+          <tr><td><strong>Technical proof</strong></td><td>Every unit of value in the system is accounted for by one auditable equation. Risk is local, explicit, and mechanically bounded.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sect" id="pitch">
+      <h2 class="sect-title">Elevator Pitch</h2>
+      <div class="template">
+        <div class="template-head">One sentence</div>
+        <div class="template-body">Omnipair is an oracleless margin protocol on Solana that transforms every SPL pair into a unified market with swaps, lending, leverage, and liquidations inside one isolated pool.</div>
+      </div>
+      <div class="template">
+        <div class="template-head">Short paragraph</div>
+        <div class="template-body">In crypto, trading and lending are separate apps — and lending needs a trusted external price feed, which only a few dozen tokens have. Omnipair merges trading and lending into one system that needs no external price feed. Each pool is its own bank: it sets the price, holds the liquidity, funds the loans, and handles the failures — all locally.</div>
+      </div>
+      <div class="template">
+        <div class="template-head">Longer description</div>
+        <div class="template-body">Trading apps let people swap tokens; lending apps let people deposit and borrow against them — but lending requires an oracle, and out of tens of thousands of actively traded tokens, only a few dozen qualify. Everything else is locked out of lending, borrowing, and leverage entirely. Omnipair merges trading and lending into one oracleless system. The architecture is the GAMM — Generalized Automated Market Maker: where an AMM only trades, a GAMM trades, lends, and levers. Any SPL pair gets a full market permissionlessly, with isolated, per-pair risk. ~78% of Solana DEX volume sits in tokens under $100M — the market this unlocks, which nobody else can serve.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="descriptions">
+      <h2 class="sect-title">Approved Brand Description</h2>
+      <p class="prose" style="font-size:13px; color:var(--muted);">Use verbatim. Click to copy.</p>
+      <div class="template">
+        <div class="template-head">~25 words</div>
+        <div class="template-body" data-copy="Omnipair is an oracleless margin protocol on Solana that transforms every SPL pair into a unified market — swaps, lending, leverage, and liquidations inside one isolated pool.">Omnipair is an oracleless margin protocol on Solana that transforms every SPL pair into a unified market — swaps, lending, leverage, and liquidations inside one isolated pool.</div>
+      </div>
+      <div class="template">
+        <div class="template-head">~50 words</div>
+        <div class="template-body" data-copy="Omnipair is an oracleless margin protocol on Solana that transforms every SPL pair into a unified market — swaps, lending, leverage, and liquidations inside one isolated pool. A single GAMM pool does what previously took three protocols, giving long-tail Solana assets the collateral, borrow, and leverage utility no other venue offers.">Omnipair is an oracleless margin protocol on Solana that transforms every SPL pair into a unified market — swaps, lending, leverage, and liquidations inside one isolated pool. A single GAMM pool does what previously took three protocols, giving long-tail Solana assets the collateral, borrow, and leverage utility no other venue offers.</div>
+      </div>
+      <div class="template">
+        <div class="template-head">~100 words</div>
+        <div class="template-body">Omnipair is an oracleless margin protocol on Solana that transforms every SPL pair into a unified market — swaps, lending, leverage, and liquidations inside one isolated pool. A single GAMM (Generalized Automated Market Maker) pool does what previously took three protocols — swap, lend, and lever — with no oracles, no governance whitelist, and isolated per-pair risk. Each pool is its own bank: it sets the price, holds the liquidity, funds the loans, and handles the failures, all locally. That unlocks the long tail: ~78% of Solana DEX volume sits in assets under $100M that no other venue can serve.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="tagline">
+      <h2 class="sect-title">Tagline <span class="wip-pill">needs sign-off</span></h2>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">Primary</div><div class="tile-value" style="font-size:18px;">"Every pair is its own bank."</div></div>
+        <div class="tile"><div class="tile-label">Supporting</div><div class="tile-value" style="font-size:18px;">"One engine, every use case."</div></div>
+      </div>
+      <h4 class="sub">Approved alternates by context</h4>
+      <ol class="phrase-list">
+        <li class="phrase-item"><span class="phrase-num">01</span><span class="phrase-text">Trade, borrow and leverage any asset without permission.</span></li>
+        <li class="phrase-item"><span class="phrase-num">02</span><span class="phrase-text">Unified money markets for every asset on Solana.</span></li>
+        <li class="phrase-item"><span class="phrase-num">03</span><span class="phrase-text">Solana's Permissionless Margin Layer</span></li>
+        <li class="phrase-item"><span class="phrase-num">04</span><span class="phrase-text">The margin layer for internet capital markets</span></li>
+        <li class="phrase-item"><span class="phrase-num">05</span><span class="phrase-text">Capital That Never Sits Still. <span style="color:var(--muted-light); font-weight:400; font-size:12px;">— LP-facing</span></span></li>
+      </ol>
+      <div class="callout">
+        <div class="callout-label">Usage rules</div>
+        <div class="callout-text">The primary line always pairs with its explanation on first use (the core message). Persona-specific lines stay in their lane — see Message by Audience.<br><br><strong>Needs sign-off:</strong> the source docs list these as a candidate set without ranking one. The primary/supporting split above follows the brief's master narrative and requires confirmation.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="value-props">
+      <h2 class="sect-title">Value Propositions</h2>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">Unified liquidity</div><div class="tile-desc">Unified money markets for every asset on Solana. One engine, every use case.</div></div>
+        <div class="tile"><div class="tile-label">Capital efficiency</div><div class="tile-desc">Capital that never sits still: two yield streams, one deposit. Higher effective LTVs without lowering safety standards. Idle liquidity is automatically lent.</div></div>
+        <div class="tile"><div class="tile-label">Permissionless markets</div><div class="tile-desc">Any SPL token pair. No listing committee, no oracle requirement, no waiting. Pick any pair, launch a full money market for it.</div></div>
+        <div class="tile"><div class="tile-label">Oracleless architecture</div><div class="tile-desc">No oracles anywhere in the system. Collateral valued at what the market could actually recover. No oracle games.</div></div>
+        <div class="tile" style="grid-column:1/-1;"><div class="tile-label">Spot, lending and leverage from one pool</div><div class="tile-desc">Where an AMM only trades, a GAMM trades, lends, and levers. One pool, one position, one surface.</div></div>
+      </div>
+    </section>
+
+    <section class="sect" id="by-audience">
+      <h2 class="sect-title">Message by Audience</h2>
+      <div class="template">
+        <div class="template-head">Traders</div>
+        <div class="template-body">
+          <span class="formula">"Long or short any token. Leverage where no perp exists."</span>
+          <span class="note">Open leverage positions on any pair instantly. Leverage the tokens perps won't list — one click, isolated risk. You pay real market impact upfront — no fake liquidation prices later.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">LPs</div>
+        <div class="template-body">
+          <span class="formula">"Deposit one token. Keep your exposure. Earn fees and interest."</span>
+          <span class="note">Earn like a Raydium LP and a Kamino lender — from one deposit. Two yield streams, one deposit. Isolated pools to protect your capital.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Token founders</div>
+        <div class="template-body">
+          <span class="formula">"Give your token a full financial ecosystem in one transaction: lending, borrowing, leverage, and yield — permissionlessly."</span>
+          <span class="note">No listing, no oracle, no waiting. A market failing elsewhere can never hurt your community.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Borrowers / holders</div>
+        <div class="template-body">
+          <span class="formula">"Get liquidity without selling. Long or short any token — only on Omnipair."</span>
+          <span class="note">Instantly unlock liquidity using any asset as collateral. Borrowing as effortless as trading.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Developers / analysts / partners</div>
+        <div class="template-body">
+          <span class="formula">"Every unit of value in the system is accounted for by one auditable equation. Risk is local, explicit, and mechanically bounded."</span>
+          <span class="note">Precise language, whitepaper-linked, never overclaims. Impact-aware collateral valuation.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sect" id="tone">
+      <h2 class="sect-title">Tone of Voice</h2>
+      <p class="prose">Rational. Direct. Assured. Technically literate. Forward-looking. The five named principles below are how that reads in practice.</p>
+
+
+      <div class="principle">
+        <div class="principle-name">Confident</div>
+        <div class="principle-desc">We speak with conviction.</div>
+      </div>
+      <div class="example-pair">
+        <div class="ex-label avoid">Avoid</div>
+        <div class="ex-box avoid">"Omnipair is an incredibly powerful platform that helps traders and DeFi users unlock their full potential with cutting-edge technology and real-time insights."</div>
+        <div class="ex-label use">Use instead</div>
+        <div class="ex-box use">"Omnipair gives you the infrastructure to trade on-chain without asking permission. Precise execution. No intermediaries."</div>
+      </div>
+
+      <div class="principle">
+        <div class="principle-name">Rational</div>
+        <div class="principle-desc">Arguments over emotions. Evidence over hype.</div>
+      </div>
+      <div class="example-pair">
+        <div class="ex-label avoid">Avoid</div>
+        <div class="ex-box avoid">"The most revolutionary DeFi protocol ever built. Join thousands of users experiencing the future of finance."</div>
+        <div class="ex-label use">Use instead</div>
+        <div class="ex-box use">"Built for non-custodial execution at institutional speed. The architecture is open — read it, verify it, run it."</div>
+      </div>
+
+      <div class="principle">
+        <div class="principle-name">Precise</div>
+        <div class="principle-desc">Clear language. No unnecessary complexity.</div>
+      </div>
+
+      <div class="principle">
+        <div class="principle-name">Independent</div>
+        <div class="principle-desc">We challenge assumptions without attacking people.</div>
+      </div>
+      <div class="example-pair">
+        <div class="ex-label avoid">Avoid</div>
+        <div class="ex-box avoid">"Unlike [Competitor], we don't charge hidden fees or lock your assets."</div>
+        <div class="ex-label use">Use instead</div>
+        <div class="ex-box use">"Your assets remain yours. Every fee is visible before execution. That's the whole model."</div>
+      </div>
+
+      <div class="principle">
+        <div class="principle-name">Visionary</div>
+        <div class="principle-desc">Focused on where markets are heading. Not where they are today.</div>
+      </div>
+    
+      <h4 class="sub">How we sound</h4>
+      <ul class="rule-list">
+        <li><span class="ok">✓</span>Confident but never hypey — especially on safety claims.</li>
+        <li><span class="ok">✓</span>Honest about limitations; risk made local and explicit.</li>
+        <li><span class="ok">✓</span>Precise — technical language used only where it earns its place.</li>
+        <li><span class="ok">✓</span>What you see is what you get.</li>
+      </ul>
+
+      <h4 class="sub">How we do not sound</h4>
+      <ul class="rule-list">
+        <li><span class="no">✕</span><strong>Hype on safety:</strong> "no risk," "risk-free yield," "can't lose money."</li>
+        <li><span class="no">✕</span><strong>Promises:</strong> guaranteed returns, APY promises.</li>
+        <li><span class="no">✕</span><strong>Overclaims:</strong> "impermanent loss eliminated," "every token is safe to leverage," audited/battle-tested language — Dusk is explicitly experimental and unaudited.</li>
+        <li><span class="no">✕</span><strong>Machinery-first:</strong> leading with GAMM, EMA, virtual reserves instead of the outcome.</li>
+        <li><span class="no">✕</span><strong>Pretending:</strong> the system never pretends liquidity exists when it doesn't — and neither does the copy.</li>
+      </ul>
+    </section>
+
+    <section class="sect" id="writing-principles">
+      <h2 class="sect-title">Writing Principles</h2>
+      <div class="principle">
+        <div class="principle-name">Lead with the outcome, not the machinery</div>
+        <div class="principle-desc">"Get liquidity without selling" before GAMM, EMA, or virtual reserves. Save deep mechanics for docs and the technical audience that asks.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">Explain category terms on first use</div>
+        <div class="principle-desc">GAMM always gets its plain meaning the first time it appears.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">Claims discipline is voice</div>
+        <div class="principle-desc"><strong>Free claims:</strong> any SPL pair permissionlessly, no oracles, isolated markets, one-token hLP exposure, collateral valued by real recoverable depth, rates that adapt automatically. <strong>Forbidden claims:</strong> see "How we do not sound."</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">Correct framings, verbatim</div>
+        <div class="principle-desc">hLP is designed to preserve one-sided exposure; costs are funding interest and small tracking friction instead of IL. Every token gets limits earned from its own liquidity history — thin markets get small limits.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">For analysts: precise, whitepaper-linked, never overclaim</div>
+        <div class="principle-desc">They're the amplifiers.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="calibration">
+      <h2 class="sect-title">Voice Spectrum</h2>
+      <p class="prose">Four axes. Each has a default position and a defined reason to move.</p>
+      <table class="spec-table">
+        <thead><tr><th>Axis</th><th>Default position</th><th>Moves when</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Technical ↔ Accessible</strong></td><td>Accessible surface, technical depth on demand</td><td>Docs and analyst content go fully technical</td></tr>
+          <tr><td><strong>Confident ↔ Restrained</strong></td><td>Confident on capability</td><td>Restrained on safety — containment, never certainty</td></tr>
+          <tr><td><strong>Visionary ↔ Factual</strong></td><td>Factual, proof-led</td><td>Visionary at brand level ("margin layer for internet capital markets")</td></tr>
+          <tr><td><strong>Product-led ↔ Philosophical</strong></td><td>Product-led, outcome-first</td><td>Philosophical only in the category story (GAMM, "every pair is its own bank")</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sect" id="copy-styles">
+      <h2 class="sect-title">Copy Styles</h2>
+      <div class="template">
+        <div class="template-head">Headlines</div>
+        <div class="template-body">
+          <span class="formula">Short, imperative, outcome-first — the punchline register.</span>
+          <span class="example">"Trade, borrow and leverage any asset without permission."<br>"Pick Any Pair. Launch a Full Money Market for it."</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Body copy</div>
+        <div class="template-body">
+          <span class="formula">Plain-language mechanism, controlled sentences, honest framing.</span>
+          <span class="note">The register of the 30-second explanation: problem, then how Omnipair resolves it, then the stat.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Product copy</div>
+        <div class="template-body">
+          <span class="formula">Simple interfaces, clear actions — borrow, loop, long, trade, LP.</span>
+          <span class="note">Complexity visibly handled by the machine, not the user.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Technical &amp; documentation copy</div>
+        <div class="template-body">
+          <span class="formula">Reserve-invariant register: precise, whitepaper-linked, terms defined, limitations stated.</span>
+          <span class="note">Never ship safety-certainty language.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Social voice</div>
+        <div class="template-body">
+          <span class="formula">Persona lines in their lane; launch-thread register is the category story.</span>
+          <span class="example">Culture lane may use: "If it's on Solana, it can get a full money market." / "If liquidity exists, the market exists."</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sect" id="vocabulary">
+      <h2 class="sect-title">Terminology</h2>
+      <table class="spec-table">
+        <thead><tr><th>Term</th><th>Plain meaning</th><th>Rule</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GAMM</strong></td><td>The pool type that trades + lends + levers</td><td>Always explain on first use</td></tr>
+          <tr><td><strong>hLP</strong></td><td>One-sided leveraged liquidity vault</td><td>Flagship term</td></tr>
+          <tr><td><strong>yLP</strong></td><td>Two-sided liquidity position that also earns interest</td><td>Use with explanation</td></tr>
+          <tr><td><strong>Oracleless</strong></td><td>Needs no external price feed</td><td>Core differentiator</td></tr>
+          <tr><td><strong>Isolated</strong></td><td>Each market/position sealed off from others</td><td>Approved</td></tr>
+          <tr><td><strong>Impermanent loss (IL)</strong></td><td>LP underperformance vs. just holding</td><td>Use when marketing hLP</td></tr>
+        </tbody>
+      </table>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">Restricted</div><div class="tile-desc"><strong>Reserve invariant</strong> — analyst-facing content only.</div></div>
+        <div class="tile"><div class="tile-label">Avoid</div><div class="tile-desc">"No risk," "risk-free," "guaranteed," "eliminated" (for IL), "audited" / "battle-tested" (until true), generic superlatives that overclaim safety.</div></div>
+      </div>
+      <div class="callout" style="border-left-color:var(--muted);">
+        <div class="callout-label">Naming inconsistency to reconcile</div>
+        <div class="callout-text">The brief uses <strong>yLP</strong> for the two-sided LP position; the ICP doc calls it <strong>omLP</strong>. Pick one before the book ships.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="naming">
+      <h2 class="sect-title">Capitalisation &amp; Naming</h2>
+      <table class="spec-table">
+        <tbody>
+          <tr><td><strong>Omnipair</strong></td><td>Capital O, one word</td></tr>
+          <tr><td><strong>Dusk</strong></td><td>The v2 product</td></tr>
+          <tr><td><strong>GAMM</strong></td><td>All caps; expand to "Generalized Automated Market Maker" on first use</td></tr>
+          <tr><td><strong>hLP / yLP</strong></td><td>Lowercase prefix, capital LP</td></tr>
+          <tr><td><strong>SPL</strong></td><td>All caps</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+<section class="sect" id="phrases">
+      <h2 class="sect-title">Signature Phrases</h2>
+      <p class="prose">Lines that capture how Omnipair sounds. Reuse, remix, or use as north stars when writing fresh copy.</p>
+      <ol class="phrase-list">
+        <li class="phrase-item"><span class="phrase-num">01</span><span class="phrase-text">Financial utility should be permissionless.</span></li>
+        <li class="phrase-item"><span class="phrase-num">02</span><span class="phrase-text">Every asset deserves access.</span></li>
+        <li class="phrase-item"><span class="phrase-num">03</span><span class="phrase-text">Verify. Don't trust.</span></li>
+        <li class="phrase-item"><span class="phrase-num">04</span><span class="phrase-text">Built for the assets everyone else ignores.</span></li>
+        <li class="phrase-item"><span class="phrase-num">05</span><span class="phrase-text">Open markets win.</span></li>
+        <li class="phrase-item"><span class="phrase-num">06</span><span class="phrase-text">No approvals. No gatekeepers. No waiting.</span></li>
+        <li class="phrase-item"><span class="phrase-num">07</span><span class="phrase-text">The infrastructure layer for open markets.</span></li>
+        <li class="phrase-item"><span class="phrase-num">08</span><span class="phrase-text">One market. More utility.</span></li>
+        <li class="phrase-item"><span class="phrase-num">09</span><span class="phrase-text">Built by builders. Verified by anyone.</span></li>
+        <li class="phrase-item"><span class="phrase-num">10</span><span class="phrase-text">The future of finance is permissionless.</span></li>
+      </ol>
+    </section>
+
+<section class="sect" id="templates">
+      <h2 class="sect-title">Example Copy <span class="wip-pill">work in progress</span></h2>
+      <p class="prose">Ready-to-use structures for common contexts. Fill in the specifics — the voice is already set.</p>
+
+      <div class="template">
+        <div class="template-head">Hero headline</div>
+        <div class="template-body">
+          <span class="formula">[Specific capability], without [the thing it removes].</span>
+          <span class="example">"On-chain execution at institutional speed, without the intermediary."</span>
+          <span class="note">State the real capability + name what it replaces. No adjectives in the lead.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Hero subheadline</div>
+        <div class="template-body">
+          <span class="formula">[What you actually get] + [why it's different in one clause].</span>
+          <span class="example">"Infrastructure designed for non-custodial trading. The architecture is open — read it, verify it, run it."</span>
+          <span class="note">Two short sentences work better than one long one. The second sentence does the work.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Feature description</div>
+        <div class="template-body">
+          <span class="formula">[Feature name] — [one-line functional description].</span>
+          <span class="example">"Non-custodial routing — your positions stay on-chain, every step of the execution."</span>
+          <span class="note">No marketing prefix. Name it, define it, done.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">UI error / status</div>
+        <div class="template-body">
+          <span class="formula">State what happened. Say what to do next.</span>
+          <span class="example">"Transaction failed — insufficient liquidity in this pool at this size. Try a smaller position or a different pair."</span>
+          <span class="note">No apologies. No vagueness. Name the reason, provide the path forward.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Social — announcement</div>
+        <div class="template-body">
+          <span class="formula">[What was built]. [Why it matters in one sentence]. [Where to verify it.]</span>
+          <span class="example">"Omnipair now supports [X]. It means [concrete change for the user]. Contracts here: [link]."</span>
+          <span class="note">Never announce that you're announcing. Start with the thing.</span>
+        </div>
+      </div>
+      <div class="template">
+        <div class="template-head">Long-form / docs opening</div>
+        <div class="template-body">
+          <span class="formula">State the problem precisely. Then say what this document addresses.</span>
+          <span class="example">"Non-custodial execution across fragmented liquidity sources introduces three routing challenges. This document covers how Omnipair handles each."</span>
+          <span class="note">Skip the preamble. Start with the problem.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="logo">
+      <div class="chapter-head"><span class="chapter-num">03</span><span class="done-pill">done</span></div>
+      <h1 class="chapter-title">logo system</h1>
+      <p class="chapter-intro">The Omnipair star and wordmark — lockups, hierarchy, construction, clear space, minimum size, and misuse.</p>
+    </section>
+
+    <section class="sect" id="lockups">
+      <h2 class="sect-title">Primary Lockups <span class="done-pill">done</span></h2>
+      <p class="prose">The primary horizontal lockup is the default expression of the brand. Stacked lockups pair the app-icon tile with the wordmark for vertical compositions.</p>
+
+      <div class="lockup-hero">
+        <img loading="lazy" src="assets/lockups/horizontal-shaded-light.png" alt="Omnipair primary horizontal lockup — shaded, on light">
+      </div>
+
+      <h4 class="sub">Horizontal</h4>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/horizontal-black-light.png" alt="Horizontal lockup, black on light"><div class="lockup-cap">Flat · on light</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/horizontal-white-dark.png" alt="Horizontal lockup, white on dark"><div class="lockup-cap">Flat · on dark</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/horizontal-shaded-light.png" alt="Horizontal lockup, shaded on light"><div class="lockup-cap">Shaded · on light</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/horizontal-silver-dark.png" alt="Horizontal lockup, silver on dark"><div class="lockup-cap">Silver · on dark</div></div>
+      </div>
+
+      <h4 class="sub">Stacked</h4>
+      <div class="lockup-grid">
+        
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/stacked-white-tile-dark.png" alt="Stacked lockup, white tile on dark"><div class="lockup-cap">White tile · on dark</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/stacked-black-tile-light.png" alt="Stacked lockup, black tile on light"><div class="lockup-cap">Black tile · on light</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/stacked-dark-tile-light.png" alt="Stacked lockup, dark tile on light"><div class="lockup-cap">Dark tile · on light</div></div>
+      </div>
+    </section>
+
+    <section class="sect" id="symbol">
+      <h2 class="sect-title">The Symbol</h2>
+      <p class="prose">The Omnipair star — one point radiating outward. Shown standalone for app icons, favicons, avatars, and watermarks.</p>
+      <div class="lockup-grid three">
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/symbol-black-light.png" alt="Symbol, black on light"><div class="lockup-cap">On light</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/symbol-white-dark.png" alt="Symbol, white on dark"><div class="lockup-cap">On dark</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/symbol-shaded-light.png" alt="Symbol, shaded on light"><div class="lockup-cap">Shaded</div></div>
+      </div>
+      <div class="lockup-grid three">
+        <div class="lockup-card"><img loading="lazy" src="assets/lockups/symbol-silver-dark.png" alt="Symbol, silver on dark"><div class="lockup-cap">Silver · on dark</div></div>
+        
+        <div class="lockup-card"><img loading="lazy" src="assets/logo-spec/construction.svg" alt="Logomark construction — five overlapping circles define the rounded terminals" style="padding:1.25rem; background:var(--surface);"><div class="lockup-cap">Construction · from overlapping circles</div></div>
+      </div>
+    </section>
+
+    <section class="sect" id="wordmark">
+      <h2 class="sect-title">Wordmark Rationale</h2>
+      <p class="prose">Why the Omnipair wordmark looks the way it does. It is a custom drawing — never typeset it manually.</p>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">01</div><div class="tile-value">Clean geometric construction</div><div class="tile-desc">Built with simple geometric circles for a modern, crisp foundation that scales perfectly.</div></div>
+        <div class="tile"><div class="tile-label">02</div><div class="tile-value">Soft, approachable feel</div><div class="tile-desc">Subtle rounded details on terminals and joints create a friendly, human-centric tone.</div></div>
+        <div class="tile"><div class="tile-label">03</div><div class="tile-value">Sturdy, confident rhythm</div><div class="tile-desc">Balanced letter widths and baseline alignment generate a solid, stable typographic presence.</div></div>
+        <div class="tile"><div class="tile-label">04</div><div class="tile-value">Consistent stroke logic</div><div class="tile-desc">Uniform stroke weights with precise optical adjustments deliver a coherent aesthetic flow.</div></div>
+        <div class="tile"><div class="tile-label">05</div><div class="tile-value">Balanced spacing</div><div class="tile-desc">Carefully adjusted tracking ensures optimal visual breathing room and high readability.</div></div>
+        <div class="tile"><div class="tile-label">06</div><div class="tile-value">Clarity at every size</div><div class="tile-desc">Optimized shapes maintain exceptional legibility from massive signs down to mobile screens.</div></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Rule</div>
+        <div class="callout-text">Use the Omnipair wordmark as shown. Do not stretch, slant, or modify the individual letterforms.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="hierarchy">
+      <h2 class="sect-title">Lockup Hierarchy</h2>
+      <p class="prose">Use the lockups in order of priority to build a clear, consistent, and recognizable Omnipair brand experience across all touchpoints.</p>
+      <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="tile">
+          <div class="tile-label">01 · Default</div>
+          <div class="tile-value">Primary horizontal lockup</div>
+          <div class="tile-desc">Use in most brand communications where horizontal space is available.<br><br><strong>Recommended:</strong> website header, dashboard header, email header, partner banners.</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">02 · Secondary</div>
+          <div class="tile-value">Centered / stacked lockup</div>
+          <div class="tile-desc">Use when a centered layout or vertical composition provides better optical balance.<br><br><strong>Recommended:</strong> cover page, presentation title, event screens, splash screen.</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">03 · Tertiary</div>
+          <div class="tile-value">Symbol-only mark</div>
+          <div class="tile-desc">Use the standalone symbol as a compact brand identifier when space is limited.<br><br><strong>Recommended:</strong> app icon, favicon, social avatar, small spaces.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sect" id="construction">
+      <h2 class="sect-title">Construction & Optical Alignment</h2>
+      <p class="prose">The Omnipair logomark is constructed from <strong>five rounded terminals radiating from a central axis</strong>, forming an asterisk-like symbol. Each terminal represents a point of connection — embodying the concept of pairing. The geometry is derived from overlapping circles, ensuring optical balance at every scale.</p>
+      <div class="lockup-hero" style="background:var(--surface); padding:2rem 2.5rem;">
+        <img loading="lazy" src="assets/logo-spec/construction.svg" alt="Logomark construction — dashed outline of the symbol, five terminal circles and radial axes; caption: Omnipair — the pair of everything">
+      </div>
+      <p class="prose">Built on geometry, corrected for perception. The proportion system for the horizontal lockup: symbol height <strong>1x</strong>, gap spacing <strong>0.35x</strong>, wordmark width <strong>5.05x</strong>.</p>
+      <ul class="rule-list">
+        <li><span class="ok">✓</span><strong>Visual centering</strong> — the symbol is adjusted slightly upward for perceived balance. Avoid true geometric dead-center alignment.</li>
+        <li><span class="ok">✓</span><strong>Optical correction</strong> — subtle shaping ensures no terminal nodes look distorted when rendered.</li>
+        <li><span class="ok">✓</span><strong>Lockup alignment</strong> — direct typographic alignment between the horizontal visual axis of symbol and wordmark.</li>
+      </ul>
+      <div class="callout">
+        <div class="callout-label">Rule</div>
+        <div class="callout-text">Use the horizontal lockup as shown. Do not alter the symbol, wordmark, proportions, or spacing.</div>
+      </div>
+    </section>
+
+
+    <section class="sect" id="optical">
+      <h2 class="sect-title">Optical Centring</h2>
+      <p class="prose">The Omnipair logo is centred using an <strong>optical bounding box</strong>, not its visible bounds alone. Add an invisible top allowance equal to <strong>7.5% of the logo height</strong>, then centre this expanded optical box within the container. This compensates for the uneven visual weight of the mark and makes the logo appear centred.</p>
+      <p class="prose">The logo remains horizontally centred at 50% of the container width.</p>
+      <div class="lockup-hero" style="background:var(--surface); padding:2rem 2.5rem;">
+        <img loading="lazy" src="assets/logo-spec/proportion.svg" alt="Proportion drawing — the symbol beside its optical bounding box with the 7.5% allowance marked above and 100% height marked at the side">
+      </div>
+      <p class="prose" style="font-size:13.5px; color:var(--muted);">The symbol sits at 7.5% of the lockup's bounding area, ensuring consistent visual weight regardless of reproduction size. Always scale the lockup as a single unit — never resize the symbol or wordmark independently.</p>
+
+      <div class="formula-box">
+        <span class="fl">Optical allowance</span> = Logo height × 7.5%<br>
+        <span class="fl">Optical box height</span> = Logo height + Optical allowance<br>
+        <span class="fl">Logo top position</span> = (Container height − Optical box height) ÷ 2 + Optical allowance
+      </div>
+
+      <h4 class="sub">Worked examples</h4>
+      <div class="grid2">
+        <div class="tile">
+          <div class="tile-label">01 · Large frame</div>
+          <div class="tile-value">1080px container · 494px logo</div>
+          <div class="tile-desc">Allowance 494 × 7.5% = 37.05px · optical box 531.05px · box top (1080 − 531.05) ÷ 2 = 274.48px · final top 274.48 + 37.05 = <strong>≈312px</strong>.<br>Geometric position would be 293px — the correction moves the logo 18.5px downward.</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">02 · Presentation frame</div>
+          <div class="tile-value">720px container · 320px logo</div>
+          <div class="tile-desc">Allowance 320 × 7.5% = 24px · optical box 344px · box top (720 − 344) ÷ 2 = 188px · final top 188 + 24 = <strong>212px</strong>.<br>Geometric position would be 200px — the logo moves 12px downward.</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">03 · Square graphic</div>
+          <div class="tile-value">400px container · 200px logo</div>
+          <div class="tile-desc">Allowance 200 × 7.5% = 15px · optical box 215px · box top (400 − 215) ÷ 2 = 92.5px · final top 92.5 + 15 = <strong>≈108px</strong>.<br>Geometric position would be 100px — the logo moves 7.5px downward.</div>
+        </div>
+        <div class="tile">
+          <div class="tile-label">04 · Compact application</div>
+          <div class="tile-value">256px container · 96px logo</div>
+          <div class="tile-desc">Allowance 96 × 7.5% = 7.2px · optical box 103.2px · box top (256 − 103.2) ÷ 2 = 76.4px · final top 76.4 + 7.2 = <strong>≈84px</strong>.<br>Geometric position would be 80px — the logo moves 3.6px downward.</div>
+        </div>
+      </div>
+
+      <h4 class="sub">Quick reference</h4>
+      <table class="spec-table">
+        <thead><tr><th>Container height</th><th>Logo height</th><th>7.5% allowance</th><th>Final top position</th></tr></thead>
+        <tbody>
+          <tr><td>1080px</td><td>494px</td><td>37.1px</td><td>311.5px</td></tr>
+          <tr><td>720px</td><td>320px</td><td>24px</td><td>212px</td></tr>
+          <tr><td>400px</td><td>200px</td><td>15px</td><td>107.5px</td></tr>
+          <tr><td>256px</td><td>96px</td><td>7.2px</td><td>83.6px</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <div class="callout-label">Implementation note</div>
+        <div class="callout-text">Round the final position to the nearest whole pixel for digital applications. In Figma, create a frame that is 107.5% of the logo height, place the invisible 7.5% allowance above the logo, and centre the complete frame inside the parent container.</div>
+      </div>
+    </section>
+    <section class="sect" id="clearspace">
+      <h2 class="sect-title">Clear Space</h2>
+      <p class="prose">Protect the logo with consistent breathing room. A minimum clear space must always surround the Omnipair logo — it keeps the logo readable, recognizable, and free from visual clutter.</p>
+      <p class="prose">The exclusion zone is measured by the <strong>width of the logomark's terminal</strong> and applies equally on all sides — the orange symbols in the diagrams mark one unit. This relative metric guarantees proportional breathing room at any output size, and keeps the logo free to breathe with its visual authority intact.</p>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/logo-spec/clearspace-horizontal.png" alt="Clear space — horizontal lockup inside its dashed exclusion zone, one terminal width on all sides" style="padding:1.25rem 1.5rem; background:var(--surface);"><div class="lockup-cap">Horizontal lockup · one unit all sides</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/logo-spec/clearspace-stacked.png" alt="Clear space — centred lockup inside its dashed exclusion zone" style="padding:1.25rem 1.5rem; background:var(--surface);"><div class="lockup-cap">Centred lockup · one unit all sides</div></div>
+      </div>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/logo-spec/clearspace-symbol.png" alt="Clear space — symbol-only mark inside its dashed exclusion zone" style="padding:1.25rem 1.5rem; background:var(--surface);"><div class="lockup-cap">Symbol-only mark · one unit all sides</div></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Rule</div>
+        <div class="callout-text">Do not place any text, graphics, or other elements inside the clear-space zone. The clear space is a minimum requirement — increase it when possible.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="minsize">
+      <h2 class="sect-title">Minimum Size</h2>
+      <p class="prose">To preserve legibility and brand integrity, the Omnipair logo must never be reproduced below its minimum approved size. At sizes below this threshold, fine details in the logomark are lost and the wordmark becomes unreadable. Always verify reproduction size before committing to production.</p>
+      <div class="lockup-hero">
+        <img loading="lazy" src="assets/logo-spec/minsize-approved.png" alt="Minimum approved size — the smallest size that maintains legibility, clear details and brand recognition — versus Too small">
+      </div>
+
+      <h4 class="sub">01 / Horizontal lockup</h4>
+      <p class="prose" style="font-size:13.5px; color:var(--muted);">Primary logo for most applications. Don't use below <strong>20px</strong>.</p>
+      <div class="lockup-hero"><img loading="lazy" src="assets/logo-spec/minsize-horizontal.png" alt="Horizontal lockup size ladder — 20px (don't use below this), 32px, 48px, 64px"></div>
+
+      <h4 class="sub">03 / Symbol-only mark</h4>
+      <p class="prose" style="font-size:13.5px; color:var(--muted);">Use in tight spaces and as an app icon. Don't use below <strong>20px</strong>.</p>
+      <div class="lockup-hero"><img loading="lazy" src="assets/logo-spec/minsize-symbol.png" alt="Symbol-only size ladder — 20px (don't use below this), 24px, 32px, 48px"></div>
+
+      <h4 class="sub">Size by context</h4>
+      <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="tile"><div class="tile-label">Small Digital</div><div class="tile-value">20 – 64px</div><div class="tile-desc">Favicons, browser tabs, UI.</div></div>
+        <div class="tile"><div class="tile-label">Social Profiles</div><div class="tile-value">400 – 800px</div><div class="tile-desc">X, LinkedIn, GitHub, Discord, app icons. LinkedIn: 800px.</div></div>
+        <div class="tile"><div class="tile-label">Large Digital</div><div class="tile-value">Above 1080px</div><div class="tile-desc">High-resolution brand assets, large UI applications.</div></div>
+      </div>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/logo-spec/minsize-contexts.png" alt="Flat symbol at small digital, social profile and large digital sizes"><div class="lockup-cap">Flat mark · by context</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/logo-spec/minsize-contexts-gradient.png" alt="Gradient app-icon mark at small digital, social profile and large digital sizes"><div class="lockup-cap">Gradient mark · by context</div></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Rule</div>
+        <div class="callout-text">Sizes smaller than the minimum limit compromise visual clarity and brand consistency. Do not alter the symbol, wordmark, proportions, or spacing — always use official logo files.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="misuse">
+      <h2 class="sect-title">Misuse</h2>
+      <p class="prose">What never to do with the Omnipair logo.</p>
+      <div class="lockup-hero">
+        <img loading="lazy" src="assets/logo-spec/misuse.png" alt="Logo misuse examples">
+      </div>
+      <ul class="rule-list">
+        <li><span class="no">✕</span>Do not stretch the logo horizontally or vertically.</li>
+        <li><span class="no">✕</span>Do not add stroke outlines to the symbol.</li>
+        <li><span class="no">✕</span>Do not crowd the logo or violate clear space rules.</li>
+        <li><span class="no">✕</span>Do not rotate or tilt the lockup.</li>
+        <li><span class="no">✕</span>Do not rearrange the lockup components.</li>
+        <li><span class="no">✕</span>Do not distort lockup height proportions.</li>
+        <li><span class="no">✕</span>Do not change icon or wordmark colours arbitrarily.</li>
+        <li><span class="no">✕</span>Do not place on low-contrast, busy, or cluttered backgrounds.</li>
+        <li><span class="no">✕</span>Do not alter the custom wordmark typeface.</li>
+        <li><span class="no">✕</span>Do not add drop shadows, glows, or special effects.</li>
+        <li><span class="no">✕</span>Do not append extra text or descriptive values.</li>
+      </ul>
+    </section>
+
+    <section class="sect" id="app-icons">
+      <h2 class="sect-title">App Icons <span class="done-pill">live</span></h2>
+      <p class="prose">Each Omnipair product is represented by a distinct app icon that shares the <strong>Sky Axis gradient language</strong> while carrying a unique glyph. Leverage, Lending, and Trade each use their assigned colour zone — blue, orange, and turquoise — ensuring instant recognition within the product suite.</p>
+      <div class="lockup-hero" style="background:var(--surface); padding:2rem; display:grid; place-items:center;">
+        <img loading="lazy" src="assets/icons/suite-row.png" alt="The three app icons side by side — Leverage (blue chevron), Lending (aqua asterisk), Trade (orange crossing arrows)" style="max-width:420px;">
+      </div>
+      <div class="lockup-grid three">
+        <div class="lockup-card"><div class="icon-tile"><img loading="lazy" src="assets/icons/leverage.png" alt="Leverage app icon — white chevron on the Sky palette gradient"></div><div class="lockup-cap">Leverage · Sky palette</div></div>
+        <div class="lockup-card"><div class="icon-tile"><img loading="lazy" src="assets/icons/lending.png" alt="Lending app icon — white asterisk on the Aqua–Dawn gradient"></div><div class="lockup-cap">Lending · Dawn palette</div></div>
+        <div class="lockup-card"><div class="icon-tile"><img loading="lazy" src="assets/icons/trade.png" alt="Trade app icon — white crossing arrows on the Dawn palette gradient"></div><div class="lockup-cap">Trade · Aqua palette</div></div>
+      </div>
+      <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="tile"><div class="tile-label">Leverage</div><div class="tile-value">Upward chevron</div><div class="tile-desc">Set against the Sky palette gradient, signalling growth, elevation, and upward momentum. Rendered on both light and dark surfaces for versatility across platform contexts and system themes.</div></div>
+        <div class="tile"><div class="tile-label">Lending</div><div class="tile-value">Omnipair asterisk</div><div class="tile-desc">Carries the master symbol rendered in the Dawn palette gradient — warm orange through gold — connecting the sub-product back to the brand mark while conveying trust, value, and exchange.</div></div>
+        <div class="tile"><div class="tile-label">Trade</div><div class="tile-value">Crossing arrows</div><div class="tile-desc">Set within the Aqua palette gradient, representing exchange, movement, and the convergence of two parties. The turquoise spectrum reinforces clarity and fluidity.</div></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Files</div>
+        <div class="callout-text">Icons ship at 957px in the <a href="assets/downloads/Omnipair-AppIcons-Pack.zip" download style="color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor;">App icons pack</a> (also in the Download Brand Kit panel). Never rebuild the gradient or glyph by hand.</div>
+      </div>
+    </section>
+
+    <!-- ─── WIP CHAPTERS ─── -->
+    <section class="chapter" id="colour">
+      <div class="chapter-head"><span class="chapter-num">04</span></div>
+      <h1 class="chapter-title">colour</h1>
+      <p class="chapter-intro">One source, every color. The palette is sampled from the horizon at first light — the Sky Axis — and every ramp and gradient is a slice of it.</p>
+    </section>
+    <section class="sect" id="inspiration">
+      <h2 class="sect-title">Palette Inspiration <span class="done-pill">live</span></h2>
+      <p class="prose">The entire Omnipair palette begins with a single photograph: <strong>the horizon at first light</strong>. Deep blue overhead, warm orange at the ground, turquoise where the two meet. Every brand colour is sampled directly from this image — not invented, not adjusted to a trend.</p>
+      <div class="lockup-hero" style="background:var(--surface); padding:1.5rem; display:grid; place-items:center;"><img loading="lazy" src="assets/colour/inspiration.jpg" alt="Colour palette inspiration — the horizon at first light, with the three primaries sampled from it" style="max-width:560px; border-radius:12px;"></div>
+      <p class="prose">The three markers show where each primary sits on the natural gradient — blue high, turquoise mid, orange low. That vertical order becomes <a href="#sky-axis" style="color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor;">the Sky Axis</a>, and the axis governs everything downstream.</p>
+      <div class="callout">
+        <div class="callout-label">Why it matters</div>
+        <div class="callout-text">Because the colours come from one continuous source, they always relate. Any two Omnipair colours sit on the same gradient — which is why the system never looks assembled from parts.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="sky-axis">
+      <h2 class="sect-title">The Sky Axis <span class="done-pill">live</span></h2>
+      <p class="prose"><strong>Where everything comes from.</strong> The Omnipair palette is sampled from the horizon at first light — one continuous gradient from deep blue to warm orange. Every color in the system is a stop on this axis; every gradient is a contiguous slice of it. One source, every color — the way one pool produces every function.</p>
+      <div class="lockup-hero" style="background:var(--surface); padding:1.5rem; display:grid; place-items:center;"><img loading="lazy" src="assets/colour/tile-sky-axis.jpg" alt="The Sky Axis — master gradient tile from deep blue through turquoise and gold to warm orange, with three sample stops" style="max-width:453px; border-radius:12px;"></div>
+
+      <h4 class="sub">Palette breakdown — sky/100–500</h4>
+      <p class="prose" style="font-size:13px; color:var(--muted);">The master axis. Primaries are stops 100, 200 & 500 — bindable in <span class="mono" data-copy="omnipair/color">omnipair/color</span>. Click any value to copy.</p>
+      <table class="spec-table">
+        <thead><tr><th></th><th>Stop</th><th>Hex</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td><span class="sw" style="background:#0979E9"></span></td><td>sky/100</td><td class="mono" data-copy="#0979E9">#0979E9</td><td><strong>primary/blue</strong></td></tr>
+          <tr><td><span class="sw" style="background:#30E7D7"></span></td><td>sky/200</td><td class="mono" data-copy="#30E7D7">#30E7D7</td><td><strong>primary/turquoise</strong></td></tr>
+          <tr><td><span class="sw" style="background:#BFF3E8"></span></td><td>sky/300</td><td class="mono" data-copy="#BFF3E8">#BFF3E8</td><td>Horizon light</td></tr>
+          <tr><td><span class="sw" style="background:#F7C563"></span></td><td>sky/400</td><td class="mono" data-copy="#F7C563">#F7C563</td><td>First-light gold</td></tr>
+          <tr><td><span class="sw" style="background:#EF8332"></span></td><td>sky/500</td><td class="mono" data-copy="#EF8332">#EF8332</td><td><strong>primary/orange</strong></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sect" id="palette-sky">
+      <h2 class="sect-title">Sky Palette <span class="done-pill">live</span></h2>
+      <p class="prose">The protocol's core voice — <strong>infrastructure confidence, never cold</strong>. Anchored on primary/blue, it lightens along its ramp: through open sky into blue light, never toward flat white.</p>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/tile-sky.jpg" alt="Sky gradient tile — primary blue dissolving through open sky into blue light, with grain and halftone"><div class="lockup-cap">Gradient · radial, soft-focus</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/tile-sky-mark.jpg" alt="Sky gradient tile with the white Omnipair mark"><div class="lockup-cap">In use · with the mark</div></div>
+      </div>
+      <h4 class="sub">Ramp — primary/blue</h4>
+      <table class="spec-table">
+        <tbody>
+          <tr><td><span class="sw" style="background:#0979E9"></span></td><td>base</td><td class="mono" data-copy="#0979E9">#0979E9</td><td>primary/blue · sky/100</td></tr>
+          <tr><td><span class="sw" style="background:#3A94ED"></span></td><td>80</td><td class="mono" data-copy="#3A94ED">#3A94ED</td><td></td></tr>
+          <tr><td><span class="sw" style="background:#37A9FB"></span></td><td>60</td><td class="mono" data-copy="#37A9FB">#37A9FB</td><td>open sky</td></tr>
+          <tr><td><span class="sw" style="background:#69BFFC"></span></td><td>40</td><td class="mono" data-copy="#69BFFC">#69BFFC</td><td></td></tr>
+          <tr><td><span class="sw" style="background:#9BD4FE"></span></td><td>20</td><td class="mono" data-copy="#9BD4FE">#9BD4FE</td><td></td></tr>
+        </tbody>
+      </table>
+      <h4 class="sub">Gradient breakdown</h4>
+      <table class="spec-table">
+        <tbody>
+          <tr><td><span class="sw" style="background:#0979E9"></span></td><td>0%</td><td class="mono" data-copy="#0979E9">#0979E9</td><td>sky/100 · primary/blue</td></tr>
+          <tr><td><span class="sw" style="background:#37A9FB"></span></td><td>55%</td><td class="mono" data-copy="#37A9FB">#37A9FB</td><td>blue/60 · open sky</td></tr>
+          <tr><td><span class="sw" style="background:#E1F3FF"></span></td><td>100%</td><td class="mono" data-copy="#E1F3FF">#E1F3FF</td><td>blue light</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sect" id="palette-dawn">
+      <h2 class="sect-title">Dawn Palette <span class="done-pill">live</span></h2>
+      <p class="prose">Carries the brand's warmth — <strong>the trust signal</strong>. Anchored on primary/orange, it lightens along the axis: through gold into yellow light, never toward white.</p>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/tile-dawn.jpg" alt="Dawn gradient tile — primary orange dissolving through gold into yellow light, with grain and halftone"><div class="lockup-cap">Gradient · radial, soft-focus</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/tile-dawn-mark.jpg" alt="Dawn gradient tile with the white Omnipair mark"><div class="lockup-cap">In use · with the mark</div></div>
+      </div>
+      <h4 class="sub">Ramp — primary/orange</h4>
+      <table class="spec-table">
+        <tbody>
+          <tr><td><span class="sw" style="background:#EF8332"></span></td><td>base</td><td class="mono" data-copy="#EF8332">#EF8332</td><td>primary/orange · sky/500</td></tr>
+          <tr><td><span class="sw" style="background:#F29C5B"></span></td><td>80</td><td class="mono" data-copy="#F29C5B">#F29C5B</td><td></td></tr>
+          <tr><td><span class="sw" style="background:#FFC652"></span></td><td>60</td><td class="mono" data-copy="#FFC652">#FFC652</td><td>gold</td></tr>
+          <tr><td><span class="sw" style="background:#FFDB66"></span></td><td>40</td><td class="mono" data-copy="#FFDB66">#FFDB66</td><td></td></tr>
+          <tr><td><span class="sw" style="background:#FFEF7A"></span></td><td>20</td><td class="mono" data-copy="#FFEF7A">#FFEF7A</td><td></td></tr>
+        </tbody>
+      </table>
+      <h4 class="sub">Gradient breakdown</h4>
+      <table class="spec-table">
+        <tbody>
+          <tr><td><span class="sw" style="background:#EF8332"></span></td><td>0%</td><td class="mono" data-copy="#EF8332">#EF8332</td><td>sky/500 · primary/orange</td></tr>
+          <tr><td><span class="sw" style="background:#FFC652"></span></td><td>55%</td><td class="mono" data-copy="#FFC652">#FFC652</td><td>orange/60 · gold</td></tr>
+          <tr><td><span class="sw" style="background:#FFF6D6"></span></td><td>100%</td><td class="mono" data-copy="#FFF6D6">#FFF6D6</td><td>orange light</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sect" id="palette-aqua">
+      <h2 class="sect-title">Aqua Palette <span class="done-pill">live</span></h2>
+      <p class="prose">Sits mid-axis — the day zone between dusk and dawn. <strong>Clarity, liquidity, movement.</strong> Anchored on primary/turquoise, it lightens along its ramp into aqua light, never toward flat white.</p>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/tile-aqua.jpg" alt="Aqua gradient tile — primary turquoise dissolving into aqua light, with grain and halftone"><div class="lockup-cap">Gradient · radial, soft-focus</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/tile-aqua-mark.jpg" alt="Aqua gradient tile with the white Omnipair mark"><div class="lockup-cap">In use · with the mark</div></div>
+      </div>
+      <h4 class="sub">Ramp — primary/turquoise</h4>
+      <table class="spec-table">
+        <tbody>
+          <tr><td><span class="sw" style="background:#30E7D7"></span></td><td>base</td><td class="mono" data-copy="#30E7D7">#30E7D7</td><td>primary/turquoise · sky/200</td></tr>
+          <tr><td><span class="sw" style="background:#59ECDF"></span></td><td>80</td><td class="mono" data-copy="#59ECDF">#59ECDF</td><td></td></tr>
+          <tr><td><span class="sw" style="background:#83F1E7"></span></td><td>60</td><td class="mono" data-copy="#83F1E7">#83F1E7</td><td></td></tr>
+          <tr><td><span class="sw" style="background:#ACF5EF"></span></td><td>40</td><td class="mono" data-copy="#ACF5EF">#ACF5EF</td><td></td></tr>
+          <tr><td><span class="sw" style="background:#D6FAF7"></span></td><td>20</td><td class="mono" data-copy="#D6FAF7">#D6FAF7</td><td></td></tr>
+        </tbody>
+      </table>
+      <h4 class="sub">Gradient breakdown</h4>
+      <table class="spec-table">
+        <tbody>
+          <tr><td><span class="sw" style="background:#30E7D7"></span></td><td>0%</td><td class="mono" data-copy="#30E7D7">#30E7D7</td><td>sky/200 · primary/turquoise</td></tr>
+          <tr><td><span class="sw" style="background:#83F1E7"></span></td><td>55%</td><td class="mono" data-copy="#83F1E7">#83F1E7</td><td>turquoise/60</td></tr>
+          <tr><td><span class="sw" style="background:#EDFDFB"></span></td><td>100%</td><td class="mono" data-copy="#EDFDFB">#EDFDFB</td><td>aqua light</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="border-left-color:var(--muted);">
+        <div class="callout-label">Take the values from source</div>
+        <div class="callout-text">Every hex on this page — plus ready-made CSS custom properties — is in <a href="assets/downloads/Omnipair-Colours.md" download style="color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor;">Omnipair-Colours.md</a>, also in the Download Brand Kit panel. Never sample colour from a screenshot.</div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">Render rule — all palettes</div>
+        <div class="callout-text">Gradients render radial and soft-focus with grain + halftone fade, dissolving to light — <strong>never to flat white</strong>. All ramps are bindable variables in <span class="mono" data-copy="omnipair/color">omnipair/color</span>.</div>
+      </div>
+
+    </section>
+
+    <section class="sect" id="shades">
+      <h2 class="sect-title">Primary Colour Shades <span class="done-pill">live</span></h2>
+      <p class="prose">The three primary colour ramps — turquoise, orange, and blue — each scale from light tint (<strong>20</strong>) through <strong>base</strong> to deep shade (<strong>180</strong>). These values are bound as variables in <span class="mono" data-copy="omnipair/color">omnipair/color</span> and should be referenced by token rather than hardcoded hex values, to ensure consistency across all platforms and themes. Click any value to copy.</p>
+      <div class="ramps">
+        <div class="ramp">
+          <div class="ramp-name">primary/turquoise</div>
+          <div class="chip" style="background:#D6FAF7"><b>20</b><span data-copy="#D6FAF7">#D6FAF7</span></div>
+          <div class="chip" style="background:#ACF5EF"><b>40</b><span data-copy="#ACF5EF">#ACF5EF</span></div>
+          <div class="chip" style="background:#83F1E7"><b>60</b><span data-copy="#83F1E7">#83F1E7</span></div>
+          <div class="chip" style="background:#59ECDF"><b>80</b><span data-copy="#59ECDF">#59ECDF</span></div>
+          <div class="chip" style="background:#30E7D7"><b>base</b><span data-copy="#30E7D7">#30E7D7</span></div>
+          <div class="chip inv" style="background:#0BCFC0"><b>120</b><span data-copy="#0BCFC0">#0BCFC0</span></div>
+          <div class="chip inv" style="background:#0EB6A9"><b>140</b><span data-copy="#0EB6A9">#0EB6A9</span></div>
+          <div class="chip inv" style="background:#079E92"><b>160</b><span data-copy="#079E92">#079E92</span></div>
+          <div class="chip inv" style="background:#067F76"><b>180</b><span data-copy="#067F76" role="button" tabindex="0" aria-label="Copy #067F76">#067F76</span></div>
+        </div>
+        <div class="ramp">
+          <div class="ramp-name">primary/orange</div>
+          <div class="chip" style="background:#FFEF7A"><b>20</b><span data-copy="#FFEF7A">#FFEF7A</span></div>
+          <div class="chip" style="background:#FFDB66"><b>40</b><span data-copy="#FFDB66">#FFDB66</span></div>
+          <div class="chip" style="background:#FFC652"><b>60</b><span data-copy="#FFC652">#FFC652</span></div>
+          <div class="chip" style="background:#F89831"><b>80</b><span data-copy="#F89831">#F89831</span></div>
+          <div class="chip" style="background:#EF8332"><b>base</b><span data-copy="#EF8332">#EF8332</span></div>
+          <div class="chip inv" style="background:#D15B01"><b>120</b><span data-copy="#D15B01">#D15B01</span></div>
+          <div class="chip inv" style="background:#B93805"><b>140</b><span data-copy="#B93805">#B93805</span></div>
+          <div class="chip inv" style="background:#9C2301"><b>160</b><span data-copy="#9C2301">#9C2301</span></div>
+          <div class="chip inv" style="background:#6A1306"><b>180</b><span data-copy="#6A1306">#6A1306</span></div>
+        </div>
+        <div class="ramp">
+          <div class="ramp-name">primary/blue</div>
+          <div class="chip" style="background:#9BD4FE"><b>20</b><span data-copy="#9BD4FE">#9BD4FE</span></div>
+          <div class="chip" style="background:#69BFFC"><b>40</b><span data-copy="#69BFFC">#69BFFC</span></div>
+          <div class="chip" style="background:#37A9FB"><b>60</b><span data-copy="#37A9FB">#37A9FB</span></div>
+          <div class="chip inv" style="background:#3A94ED"><b>80</b><span data-copy="#3A94ED">#3A94ED</span></div>
+          <div class="chip inv" style="background:#0979E9"><b>base</b><span data-copy="#0979E9">#0979E9</span></div>
+          <div class="chip inv" style="background:#0E64F0"><b>120</b><span data-copy="#0E64F0">#0E64F0</span></div>
+          <div class="chip inv" style="background:#0B50DA"><b>140</b><span data-copy="#0B50DA">#0B50DA</span></div>
+          <div class="chip inv" style="background:#083DB5"><b>160</b><span data-copy="#083DB5">#083DB5</span></div>
+          <div class="chip inv" style="background:#062D8F"><b>180</b><span data-copy="#062D8F">#062D8F</span></div>
+        </div>
+      </div>
+      <div class="callout" style="border-left-color:var(--muted);">
+        <div class="callout-label">Note</div>
+        <div class="callout-text">The orange <strong>80</strong> step is <span class="mono" data-copy="#F89831">#F89831</span> in the shade ramp and <span class="mono" data-copy="#F29C5B">#F29C5B</span> in the Dawn palette breakdown above — both appear in the brandbook. Use the ramp value for UI tokens; the palette value is for gradient rendering.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="neutrals">
+      <h2 class="sect-title">Neutral Colours <span class="done-pill">live</span></h2>
+      <p class="prose">The neutral palette anchors the brand's tonal foundation, ranging from <strong>warm whites (50–200)</strong> for backgrounds and surfaces to <strong>rich darks (700–950)</strong> for text and UI containers. These warm neutrals avoid pure white and pure black, lending a natural warmth that complements the primary colour axis.</p>
+      <div class="neut">
+        <div class="neut-cell" style="background:#FFFFFF"><b>White</b><span data-copy="#FFFFFF">#FFFFFF</span></div>
+        <div class="neut-cell inv" style="background:#4D4641"><b>700</b><span data-copy="#4D4641">#4D4641</span></div>
+        <div class="neut-cell" style="background:#FBF9F7"><b>50</b><span data-copy="#FBF9F7">#FBF9F7</span></div>
+        <div class="neut-cell inv" style="background:#362F2B"><b>800</b><span data-copy="#362F2B">#362F2B</span></div>
+        <div class="neut-cell" style="background:#F4F1EC"><b>100</b><span data-copy="#F4F1EC">#F4F1EC</span></div>
+        <div class="neut-cell inv" style="background:#28231F"><b>900</b><span data-copy="#28231F">#28231F</span></div>
+        <div class="neut-cell" style="background:#E6E1DA"><b>200</b><span data-copy="#E6E1DA">#E6E1DA</span></div>
+        <div class="neut-cell inv" style="background:#13100D"><b>950</b><span data-copy="#13100D">#13100D</span></div>
+      </div>
+    </section>
+
+    <section class="sect" id="palettes-in-use">
+      <h2 class="sect-title">The Palettes in Use <span class="done-pill">live</span></h2>
+      <p class="prose">Three renders of the same system: soft radial orbs for atmosphere, saturated tiles carrying the mark, and the sub-product icon suite — every one a contiguous slice of the Sky Axis.</p>
+      <div class="lockup-grid three">
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/orb-sky.png" alt="Sky palette radial orb" style="padding:1rem;"><div class="lockup-cap">Orb · Sky</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/orb-dawn.png" alt="Dawn palette radial orb" style="padding:1rem;"><div class="lockup-cap">Orb · Dawn</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/orb-aqua.png" alt="Aqua palette radial orb" style="padding:1rem;"><div class="lockup-cap">Orb · Aqua</div></div>
+      </div>
+      <div class="lockup-grid">
+        <div class="lockup-card" style="background:var(--surface);"><img loading="lazy" src="assets/icons/suite-row.png" alt="App icon suite — Leverage, Lending, Trade" style="padding:2rem 3rem;"><div class="lockup-cap">Icon suite · <a href="#app-icons" style="color:inherit;">see App Icons</a></div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/colour/tile-sky-mark.jpg" alt="Sky gradient tile with the mark"><div class="lockup-cap">Gradient tile · with the mark</div></div>
+      </div>
+
+      <div class="wip-block">
+        <div class="wip-block-title">Colour pages still to come</div>
+        <div class="wip-tags">
+          <span class="wip-tag">values — RGB · CMYK</span><span class="wip-tag">hierarchy & ratios</span><span class="wip-tag">light & dark mode</span><span class="wip-tag">functional colours</span><span class="wip-tag">accessibility</span><span class="wip-tag">misuse</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="typography">
+      <div class="chapter-head"><span class="chapter-num">05</span></div>
+      <h1 class="chapter-title">typography</h1>
+      <p class="chapter-intro">Two typefaces: M Saans for everything the reader sees first, Saans SemiMono for everything technical.</p>
+    </section>
+
+    <section class="sect" id="type-primary">
+      <h2 class="sect-title">M Saans — Primary <span class="done-pill">live</span></h2>
+      <p class="prose"><strong>M Saans</strong> is the primary typeface of the Omnipair brand, selected for its clean geometry and excellent readability across screen and print. Its open apertures and balanced proportions make it well suited to both headline and body applications, reinforcing the brand's rational yet approachable character.</p>
+      <div class="type-spec">
+        <div class="type-spec-top">
+          <div>
+            <div class="type-word">Typography</div>
+            <div class="type-role">Primary</div>
+            <div class="type-family">M Saans</div>
+          </div>
+          <p class="type-para">A well designed brand is like an onion, the good ones have many layers and provide good readability. One of our key values is excellence above all else, we have rigorous standards to maintain, and always seek to elevate the standard of our brand to the highest level. Our brand system has evolved over the years to become a useful branding tool that can help us expand our reach and communicate our point of view effectively.</p>
+        </div>
+        <div class="type-spec-bottom">
+          <div class="type-aa" aria-hidden="true">Aa</div>
+          <div class="type-glyphs">
+            <span>Aa</span><span>Bb</span><span>Cc</span><span>Dd</span><span>Ee</span><span>Ff</span><span>Gg</span><span>Hh</span><span>Ii</span>
+            <span>Jj</span><span>Kk</span><span>Ll</span><span>Mm</span><span>Nn</span><span>Oo</span><span>Pp</span><span>Qq</span><span>Rr</span>
+            <span>Ss</span><span>Tt</span><span>Uu</span><span>Vv</span><span>Ww</span><span>Xx</span><span>Yy</span><span>Zz</span><span></span>
+            <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Files</div>
+        <div class="callout-text">M Saans VF ships as a variable font (100–900) in the <a href="assets/downloads/Omnipair-Fonts-Pack.zip" download style="color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor;">Fonts pack</a>, alongside Aeonik VF — the display face used for chapter titles and captions in this guideline.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="type-secondary">
+      <h2 class="sect-title">Saans SemiMono — Secondary <span class="done-pill">live</span></h2>
+      <p class="prose"><strong>Saans SemiMono</strong> serves as the secondary typeface, used for technical content, data labels, code snippets, and supporting UI elements. Its semi-monospaced character widths provide clarity in tabular and structured layouts while maintaining visual harmony with the primary typeface.</p>
+      <div class="type-spec mono-spec">
+        <div class="type-spec-top">
+          <div>
+            <div class="type-word">Typography</div>
+            <div class="type-role">Secondary</div>
+            <div class="type-family">Saans SemiMono</div>
+          </div>
+          <p class="type-para">A well designed brand is like an onion, the good ones have many layers and provide good readability. One of our key values is excellence above all else, we have rigorous standards to maintain, and always seek to elevate the standard of our brand to the highest level. Our brand system has evolved over the years to become a useful branding tool that can help us expand our reach and communicate our point of view effectively.</p>
+        </div>
+        <div class="type-spec-bottom">
+          <div class="type-aa" aria-hidden="true">Aa</div>
+          <div class="type-glyphs">
+            <span>Aa</span><span>Bb</span><span>Cc</span><span>Dd</span><span>Ee</span><span>Ff</span><span>Gg</span><span>Hh</span><span>Ii</span>
+            <span>Jj</span><span>Kk</span><span>Ll</span><span>Mm</span><span>Nn</span><span>Oo</span><span>Pp</span><span>Qq</span><span>Rr</span>
+            <span>Ss</span><span>Tt</span><span>Uu</span><span>Vv</span><span>Ww</span><span>Xx</span><span>Yy</span><span>Zz</span><span></span>
+            <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="border-left-color:var(--muted);">
+        <div class="callout-label">Licensing</div>
+        <div class="callout-text">Saans SemiMono is licensed separately and is not bundled in the brand kit. The specimen above falls back to the system monospace until the font is installed.</div>
+      </div>
+      <div class="wip-block">
+        <div class="wip-block-title">Typography pages still to come</div>
+        <div class="wip-tags">
+          <span class="wip-tag">hierarchy</span><span class="wip-tag">type scale</span><span class="wip-tag">numerals & data</span><span class="wip-tag">typography on colour</span><span class="wip-tag">misuse</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="layout">
+      <div class="chapter-head"><span class="chapter-num">06</span></div>
+      <h1 class="chapter-title">layout system</h1>
+      <p class="chapter-intro">Grids, spacing, composition principles and responsive behaviour.</p>
+    </section>
+    <section class="sect">
+      <div class="wip-block">
+        <div class="wip-block-title">Layout system — in progress</div>
+        <div class="wip-tags">
+          <span class="wip-tag">grid system</span><span class="wip-tag">spacing scale</span><span class="wip-tag">container widths</span><span class="wip-tag">composition</span><span class="wip-tag">asymmetry</span><span class="wip-tag">edge behaviour</span><span class="wip-tag">layout examples</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="graphic">
+      <div class="chapter-head"><span class="chapter-num">07</span></div>
+      <h1 class="chapter-title">core graphic system</h1>
+      <p class="chapter-intro">The visual devices beyond the logo — the Dither shader, the star as a graphic device, pairing and convergence, frames, lines and connections.</p>
+    </section>
+
+    <section class="sect" id="shader">
+      <h2 class="sect-title">Dither Shader <span class="done-pill">live</span></h2>
+      <p class="prose">The Dither shader transforms images through a <strong>Bayer 16×16</strong> pattern, offering precise control over size, quantization levels, brightness, and contrast. Toggle mono mode to reduce output to a single tint, defining the palette through the Mono Colour value.</p>
+      <div class="lockup-hero"><img loading="lazy" src="assets/shaders/dither-grid.jpg" alt="Grid of sixteen Omnipair environments with the Dither shader applied"></div>
+      <p class="prose">The shader scales gracefully across aspect ratios and resolutions — from full-bleed hero images to compact thumbnails. Adjust the <strong>size</strong> and <strong>level</strong> parameters proportionally to maintain consistent texture density at every dimension. It is applied with the Shader feature in Figma.</p>
+      <div class="lockup-hero"><img loading="lazy" src="assets/shaders/dither-hero.jpg" alt="Dithered hero — a pale temple on a turquoise sea under towering clouds"></div>
+
+      <h4 class="sub">Presets by output size</h4>
+      <p class="prose" style="font-size:13px; color:var(--muted);">Common to all presets: Style <strong>Bayer 16×16</strong> · Brightness <strong>100%</strong> · Contrast <strong>1</strong> · Mono <strong>off</strong> · Mono Colour <strong>FFFFFF · 100%</strong>.</p>
+      <table class="spec-table">
+        <thead><tr><th>Preset</th><th>Approx. size</th><th>Ratio</th><th>Size</th><th>Levels</th></tr></thead>
+        <tbody>
+          <tr><td>Master / Hero</td><td>1920 × 1080</td><td>16:9</td><td>2</td><td>6</td></tr>
+          <tr><td>Portrait Editorial</td><td>1080 × 1350</td><td>4:5</td><td>2</td><td>7</td></tr>
+          <tr><td>Square</td><td>1080 × 1080</td><td>1:1</td><td>2</td><td>6</td></tr>
+          <tr><td>Vertical / Story</td><td>1080 × 1920</td><td>9:16</td><td>2</td><td>8</td></tr>
+          <tr><td>Small Landscape / Card</td><td>960 × 540</td><td>16:9</td><td>2</td><td>7</td></tr>
+          <tr><td>Small Thumbnail / Reduced</td><td>480 × 270</td><td>16:9</td><td>1</td><td>4</td></tr>
+        </tbody>
+      </table>
+      <div class="lockup-grid three">
+        <div class="lockup-card"><img loading="lazy" src="assets/shaders/preset-hero.jpg" alt="Master / Hero preset render, 16:9"><div class="lockup-cap">Master / Hero · 16:9</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/shaders/preset-portrait.jpg" alt="Portrait Editorial preset render, 4:5"><div class="lockup-cap">Portrait Editorial · 4:5</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/shaders/preset-square.jpg" alt="Square preset render, 1:1"><div class="lockup-cap">Square · 1:1</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/shaders/preset-vertical.jpg" alt="Vertical / Story preset render, 9:16"><div class="lockup-cap">Vertical / Story · 9:16</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/shaders/preset-card.jpg" alt="Small Landscape / Card preset render"><div class="lockup-cap">Small Landscape / Card</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/shaders/preset-thumb.jpg" alt="Small Thumbnail preset render"><div class="lockup-cap">Small Thumbnail / Reduced</div></div>
+      </div>
+      <div class="lockup-grid" style="grid-template-columns: 300px 1fr; align-items:start;">
+        <div class="lockup-card" style="background:#1B1917;"><img loading="lazy" src="assets/shaders/dither-panel.png" alt="The Dither shader panel in Figma — Style, Size, Levels, Brightness, Contrast, Mono and Mono Colour controls"><div class="lockup-cap" style="color:rgba(255,255,255,0.55); border-color:rgba(255,255,255,0.1);">Shader panel · Figma</div></div>
+        <div class="callout" style="margin:0;">
+          <div class="callout-label">Rule</div>
+          <div class="callout-text">Dither is a finishing pass, not a style of its own — apply it to approved Omnipair imagery only, keep the Sky / Aqua / Dawn balance intact, and never push levels so low that the scene reads as pixel art.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sect">
+      <div class="wip-block">
+        <div class="wip-block-title">Graphic system — remaining pages in progress</div>
+        <div class="wip-block-desc">One of the most important Omnipair sections. Without it the identity depends too heavily on the logo alone.</div>
+        <div class="wip-tags">
+          <span class="wip-tag">core visual idea</span><span class="wip-tag">star as graphic device</span><span class="wip-tag">pairing & convergence</span><span class="wip-tag">frames & containers</span><span class="wip-tag">lines & connections</span><span class="wip-tag">primary metaphor</span><span class="wip-tag">cropping · scale · density</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="glass">
+      <div class="chapter-head"><span class="chapter-num">08</span></div>
+      <h1 class="chapter-title">engineered glass</h1>
+      <p class="chapter-intro">A recognisable Omnipair asset, not merely a rendering style — precision, refraction, one system revealed as several outcomes.</p>
+    </section>
+    <section class="sect">
+      <div class="wip-block">
+        <div class="wip-block-title">Engineered glass system — in progress</div>
+        <div class="wip-tags">
+          <span class="wip-tag">purpose of glass</span><span class="wip-tag">material properties</span><span class="wip-tag">colour reflections</span><span class="wip-tag">light & dark mode glass</span><span class="wip-tag">glass logo</span><span class="wip-tag">lighting rules</span><span class="wip-tag">when to use / not use</span><span class="wip-tag">misuse</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="diagrams">
+      <div class="chapter-head"><span class="chapter-num">09</span></div>
+      <h1 class="chapter-title">technical diagrams</h1>
+      <p class="chapter-intro">The diagram language that explains the system and establishes technical credibility.</p>
+    </section>
+
+    <section class="sect" id="explainers">
+      <h2 class="sect-title">Explainer Graphics <span class="done-pill">live</span></h2>
+      <p class="prose">Approved product illustrations for READMEs, docs, decks and posts. Isometric glass planes, Sky-to-Dawn ribbons and pill labels — the same four scenes every time, so the mechanism is recognisable before it is read.</p>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/diagrams/adaptive-liquidity.jpg" alt="Adaptive liquidity — passive liquidity continuously shaped around the market; amplified liquidity around current price; reference moves recenter the range"><div class="lockup-cap">Adaptive liquidity · range recenters with price</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/diagrams/unified-liquidity.jpg" alt="Today: one token, several liquidity silos. Dusk: one market, shared liquidity across Trade, Lending, Leverage and Provide Liquidity"><div class="lockup-cap">One market, shared liquidity</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/diagrams/gamm-pool.jpg" alt="Anatomy of a GAMM pool — Trade (swap at spot price), Lending (borrow against asset), Leverage (via spot margin engine) inside an isolated risk boundary"><div class="lockup-cap">Anatomy of a GAMM pool</div></div>
+        <div class="lockup-card" style="display:grid; grid-template-columns:1fr 1fr; gap:0;"><img loading="lazy" src="assets/diagrams/leveraged-lp.jpg" alt="Leveraged LP — earn swap fees plus borrow and leverage interest"><img loading="lazy" src="assets/diagrams/no-leverage-market.jpg" alt="Trade tokens with No Leverage Market"><div class="lockup-cap" style="grid-column:1/-1;">Leveraged LP · No Leverage Market</div></div>
+      </div>
+    </section>
+
+    <section class="sect">
+      <div class="wip-block">
+        <div class="wip-block-title">Diagram system — remaining pages in progress</div>
+        <div class="wip-tags">
+          <span class="wip-tag">diagram types</span><span class="wip-tag">grid · nodes · connectors</span><span class="wip-tag">labels & icons</span><span class="wip-tag">colour coding</span><span class="wip-tag">states</span><span class="wip-tag">complexity levels</span><span class="wip-tag">animation</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="iconography">
+      <div class="chapter-head"><span class="chapter-num">10</span></div>
+      <h1 class="chapter-title">iconography</h1>
+      <p class="chapter-intro">Icon style, grid, stroke and usage across product and marketing.</p>
+    </section>
+    <section class="sect">
+      <div class="wip-block">
+        <div class="wip-block-title">Iconography — in progress</div>
+        <div class="wip-tags">
+          <span class="wip-tag">icon style</span><span class="wip-tag">grid & stroke</span><span class="wip-tag">corner & terminal treatment</span><span class="wip-tag">UI / product / feature icons</span><span class="wip-tag">sizes & containers</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="photography">
+      <div class="chapter-head"><span class="chapter-num">11</span></div>
+      <h1 class="chapter-title">imagery</h1>
+      <p class="chapter-intro">Chromatic Worldbuilding — painterly environments with strict rules for scale, colour and atmosphere. No generic premium-tech landscapes.</p>
+    </section>
+
+    <section class="sect" id="territory">
+      <h2 class="sect-title">Visual Territory <span class="done-pill">live</span></h2>
+      <p class="prose"><strong>Chromatic Worldbuilding</strong> is Omnipair's visual territory: a mix of Digital Impressionism and Futuristic Surrealism. It combines painterly texture, surreal environments, expansive scale and distinctive colour to create an ownable visual world that feels recognisably Omnipair, even without the logo.</p>
+      <div class="lockup-hero" style="background:var(--surface); padding:1.5rem 2rem; display:grid; place-items:center;">
+        <img loading="lazy" src="assets/imagery/territory-quadrant.png" alt="Quadrant map — Human to Technical, Speculative to Contemporary Realism — placing Futuristic Surrealism and Digital Impressionism around the centre point, Chromatic Worldbuilding" style="max-width:720px;">
+      </div>
+      <div class="grid2" style="grid-template-columns:repeat(5,1fr);">
+        <div class="tile"><div class="tile-value">Painterly</div><div class="tile-desc">Expressive brushwork and visible texture over polished photorealism.</div></div>
+        <div class="tile"><div class="tile-value">Chromatic</div><div class="tile-desc">Bold colour relationships that make the imagery immediately recognisable.</div></div>
+        <div class="tile"><div class="tile-value">Expansive</div><div class="tile-desc">Large environments, dramatic scale and a sense of discovery.</div></div>
+        <div class="tile"><div class="tile-value">Surreal</div><div class="tile-desc">Familiar natural elements pushed into unfamiliar or impossible worlds.</div></div>
+        <div class="tile"><div class="tile-value">Human</div><div class="tile-desc">Small human moments and organic subjects that keep the world grounded.</div></div>
+      </div>
+      <div class="callout" style="border-left-color:var(--muted);">
+        <div class="callout-label">Note</div>
+        <div class="callout-text">We aren't choosing an aesthetic. We're creating a visual territory that Omnipair can own.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="environments">
+      <h2 class="sect-title">Environments <span class="done-pill">live</span></h2>
+      <p class="prose">Omnipair environments explore different landscapes and architectural spaces while keeping the same painterly style, colour balance and sense of scale. Each scene can change, but the visual language should remain consistent.</p>
+      <div class="lockup-hero"><img loading="lazy" src="assets/imagery/environment-grid.jpg" alt="Grid of sixteen painted Omnipair environments — turquoise seas, orange cliffs, monumental clouds and lone figures — sharing one palette"></div>
+    </section>
+
+    <section class="sect" id="prompt-formula">
+      <h2 class="sect-title">Prompt Formula <span class="done-pill">live</span></h2>
+      <p class="prose">Use ChatGPT to turn a simple scene idea into a consistent Omnipair Midjourney prompt. Start with the Global Prompt, add your scene request, then copy the finished prompt into Midjourney.</p>
+      <div class="formula-box">
+        <span class="fl">Formula</span> &nbsp; GLOBAL PROMPT + SCENE REQUEST → MIDJOURNEY PROMPT<br>
+        <span class="fl" style="font-size:12px;">Pro tip: use an approved Omnipair image as an Image Prompt or Style Reference in Midjourney for tighter visual consistency.</span>
+      </div>
+
+      <h4 class="sub">ChatGPT guide</h4>
+      <div class="principle">
+        <div class="principle-name">1. Paste the Global Prompt</div>
+        <div class="principle-desc">Use the approved Omnipair Global Prompt unchanged at the start of a new ChatGPT conversation. It defines the imagery style, colour system, composition rules and Midjourney prompt behaviour.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">2. Add your Scene Prompt</div>
+        <div class="principle-desc">Scenes can explore different environments while keeping the same Omnipair visual language — <strong>Architecture</strong> (monumental structures, bridges, terraces, courtyards) · <strong>Landscape</strong> (cliffs, plains, valleys, plateaus, mountains) · <strong>Water</strong> (reflective basins, coastlines, wetlands, mineral pools) · <strong>Desert / Mineral</strong> (salt flats, eroded formations, dry basins) · <strong>Botanical</strong> (monumental vegetation and elevated gardens) · <strong>Infrastructure</strong> (walkways, viaducts, observation structures) · <strong>Atmospheric</strong> (large skies, horizon events, clouds and mist) · <strong>Hybrid</strong> (architecture integrated with landscape and water).</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">3. Generate the Midjourney Prompt</div>
+        <div class="principle-desc">ChatGPT expands the scene request into one complete single-line Midjourney prompt while keeping the Global Prompt unchanged.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-name">4. Take the Prompt to Midjourney</div>
+        <div class="principle-desc">Copy the finished prompt from ChatGPT and use it in Midjourney with the reference workflow below.</div>
+      </div>
+
+      <details class="prompt-details">
+        <summary>ChatGPT Global Prompt — use this at the start of your conversation <span class="dl-get" data-copy-el="global-prompt" style="margin-left:auto;">copy</span></summary>
+<pre id="global-prompt">OMNIPAIR - GLOBAL MIDJOURNEY PROMPT-WRITER DNA V2: You are the dedicated Omnipair Midjourney visual prompt writer; your ONLY job is to transform each simple scene request into ONE complete single-line Midjourney CMD prompt and NEVER generate an image yourself; every prompt must preserve the established Omnipair visual world while creating an original scene rather than copying the supplied reference composition; REFERENCE BEHAVIOUR = when an approved Omnipair image is supplied, describe it as the CLOSE STYLE, ATMOSPHERE, PAINTERLY-MEDIUM, COLOUR-BALANCE AND VISUAL-LANGUAGE AUTHORITY ONLY, preserving its soft painterly atmosphere, luminous recession, broad simplified forms, calm reflective space, matte painted surface, restrained detail, expressive human-made brush character and tactile canvas quality while explicitly avoiding duplication of its exact architecture, landscape, figure placement or composition; ART STYLE = refined traditional watercolour and gouache environmental painting on heavily textured artist canvas, visible woven canvas grain, pigment absorbed into fabric, translucent washes with selective opaque passages, soft bleeding and feathered atmospheric edges, granulating pigments, dry-brush texture on terrain and architecture, irregular hand-painted boundaries, subtle pigment pooling, tactile matte surface and crisp foreground forms gradually dissolving into atmospheric washes at distance; WORLD LANGUAGE = monumental but serene human-made environments, colossal civic structures, bridges, terraces, sculpted mineral walls, reflective lagoons, tidal flats, coastal plains, monumental interiors, elevated walkways, water-management systems and quiet infrastructure, with architecture expressing connection, convergence, exchange and shared movement without literal logo-shaped buildings; COMPOSITION = cinematic 16:9, strong spatial hierarchy, expansive negative space, low or carefully controlled horizon, asymmetrical but balanced framing, broad open atmosphere, layered foreground-midground-background depth and normally 0–1 tiny solitary human figure for scale; CLOUD LAW = clouds must be intentional rather than automatic, use restrained cloud coverage unless the scene specifically requires a cloud-focused composition, favour a mostly open sky with a few coherent soft painterly formations, never repetitive cauliflower clouds, jittery fragments or a giant central cloud mass unless explicitly requested; STRICT OMNIPAIR COLOUR SYSTEM = use ONLY approved SKY, AQUA and DAWN colour families, with all three carrying clear and approximately balanced perceived visual importance across the full image rather than one family dominating, using SKY primarily through atmosphere, structural depth and selected reflections, AQUA through water, mist, transitions and selected surfaces, and DAWN through illuminated terrain, architectural planes, horizon light and reflected warmth; keep the three families recognisably distinct and never allow them to average into green, beige, grey, brown, purple, magenta or any foreign colour; COLOUR DISTRIBUTION LAW = do not merely mention the three families, assign each family to substantial physical regions of the scene so Midjourney is forced to render all three visibly; MATERIAL AND ATMOSPHERE LAW = favour matte pigment, atmospheric haze, reflective water, mineral terrain, soft edge loss, visible brush structure and believable environmental depth over glossy CGI, smooth digital gradients or hard concept-art rendering; SCENE TERRITORIES = architecture, monumental interiors, coastal lagoons, tidal environments, mineral plains, mountains, bridges, civic infrastructure, water systems, botanical structures and hybrid architecture-landscape scenes are all allowed provided each scene remains clearly within the established Omnipair world; OUTPUT LAW = return ONLY ONE finished single-line Midjourney prompt containing the scene subject, environment, camera/composition, atmosphere, colour assignment, painting medium, material behaviour, negatives and final Midjourney parameters; default parameters = --ar 16:9 --raw --stylize 100–200 --chaos 2–8, adding --iw or --sw only when the user is actually using an Image Prompt or Style Reference; ABSOLUTE EXCLUSIONS = no logos unless specifically requested, no typography, no branded architecture, no photorealism, no glossy CGI, no generic sci-fi UI, no random futuristic cities, no fantasy creatures, no pink, purple, magenta, green cast, beige, grey-dominant imagery or any colour outside the approved Omnipair palette; when the user provides only a short scene idea, intelligently expand it into a complete professional Midjourney prompt without asking unnecessary questions.</pre>
+      </details>
+
+      <h4 class="sub">Midjourney reference workflow</h4>
+      <div class="grid2">
+        <div class="tile"><div class="tile-label">01</div><div class="tile-value">Choose a Reference Image</div><div class="tile-desc">Download both approved Omnipair reference images (below).</div></div>
+        <div class="tile"><div class="tile-label">02</div><div class="tile-value">Add the Reference in Midjourney</div><div class="tile-desc">Use Image Prompts to preserve painting style, colour, canvas texture and atmosphere.</div></div>
+        <div class="tile"><div class="tile-label">03</div><div class="tile-value">Paste the ChatGPT Scene Prompt</div><div class="tile-desc">Paste the finished single-line prompt from the Omnipair ChatGPT Prompt Formula. This defines the new scene while the reference maintains visual consistency.</div></div>
+        <div class="tile"><div class="tile-label">04</div><div class="tile-value">Generate + Refine</div><div class="tile-desc">Choose the variation that best preserves Sky / Aqua / Dawn balance, painterly texture, canvas grain and atmospheric depth. Rerun if it becomes too photorealistic, cloud-heavy or off-brand.</div></div>
+      </div>
+      <div class="lockup-grid" style="grid-template-columns:1fr;">
+        <div class="lockup-card"><img loading="lazy" src="assets/imagery/midjourney-bar-refs.jpg" alt="Midjourney prompt bar with the reference image attached — Image Prompts, Style References and Omni Reference options"><div class="lockup-cap">Midjourney · reference attached as Image Prompt</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/imagery/midjourney-bar-prompt.jpg" alt="Midjourney prompt bar holding a long generated Omnipair scene prompt"><div class="lockup-cap">Midjourney · finished scene prompt pasted</div></div>
+      </div>
+    </section>
+
+    <section class="sect" id="references">
+      <h2 class="sect-title">Reference Images &amp; Outputs <span class="done-pill">live</span></h2>
+      <p class="prose">Download both reference images to import into Midjourney as Image Prompts or Style References. Below them, approved outputs generated with the formula.</p>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/imagery/reference-cliff.jpg" alt="Reference image — a lone figure on an orange cliff over a turquoise sea"><div class="lockup-cap">Reference 01 · <a href="assets/downloads/Omnipair-Reference-Cliff.png" download style="color:var(--accent);">download png</a></div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/imagery/reference-cloud.jpg" alt="Reference image — a monumental cloud over a reflective coastal plain"><div class="lockup-cap">Reference 02 · <a href="assets/downloads/Omnipair-Reference-Cloud.png" download style="color:var(--accent);">download png</a></div></div>
+      </div>
+      <h4 class="sub">Midjourney outputs</h4>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/imagery/output-1.jpg" alt="Midjourney output — painted turquoise sea and towering clouds"></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/imagery/output-2.jpg" alt="Midjourney output — painted coastal plain with a distant structure"></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/imagery/output-3.jpg" alt="Midjourney output — painted sky over a reflective basin"></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/imagery/output-4.jpg" alt="Midjourney output — painted cliffs and clouds"></div>
+      </div>
+      <div class="wip-block">
+        <div class="wip-block-title">Imagery pages still to come</div>
+        <div class="wip-tags">
+          <span class="wip-tag">human photography</span><span class="wip-tag">grading & atmosphere</span><span class="wip-tag">imagery with UI / glass / logo</span><span class="wip-tag">misuse</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="motion">
+      <div class="chapter-head"><span class="chapter-num">12</span></div>
+      <h1 class="chapter-title">motion</h1>
+      <p class="chapter-intro">Controlled, precise, smooth, systematic. Motion with informational purpose.</p>
+    </section>
+    <section class="sect">
+      <div class="wip-block">
+        <div class="wip-block-title">Motion system — in progress</div>
+        <div class="wip-tags">
+          <span class="wip-tag">motion personality</span><span class="wip-tag">logo & symbol motion</span><span class="wip-tag">convergence motion</span><span class="wip-tag">glass motion</span><span class="wip-tag">UI motion</span><span class="wip-tag">easing & duration</span><span class="wip-tag">loops & loading</span><span class="wip-tag">misuse</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="product">
+      <div class="chapter-head"><span class="chapter-num">13</span></div>
+      <h1 class="chapter-title">product identity</h1>
+      <p class="chapter-intro">The visible relationship between brand and product — detailed components live in the product design system.</p>
+    </section>
+    <section class="sect">
+      <div class="wip-block">
+        <div class="wip-block-title">Product identity — in progress</div>
+        <div class="wip-tags">
+          <span class="wip-tag">brand-to-product relationship</span><span class="wip-tag">product colour & type</span><span class="wip-tag">buttons & controls</span><span class="wip-tag">cards · panels · tables</span><span class="wip-tag">charts</span><span class="wip-tag">states</span><span class="wip-tag">screenshots in marketing</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="applications">
+      <div class="chapter-head"><span class="chapter-num">14</span></div>
+      <h1 class="chapter-title">applications</h1>
+      <p class="chapter-intro">Proof the system works — social profiles, merchandise, website, product, docs, presentations, events.</p>
+    </section>
+
+    <section class="sect" id="social">
+      <h2 class="sect-title">Social Media <span class="done-pill">live</span></h2>
+      <p class="prose">One icon, one banner, every platform. The gradient mark on the Sky Axis tile is the profile image everywhere; the painted coastal hero is the banner. Bio: <strong>Permissionless borrowing and leverage on long-tail assets.</strong></p>
+
+      <h4 class="sub">Discord</h4>
+      <div class="lockup-grid">
+        <div class="lockup-card" style="grid-column:1/-1;"><img loading="lazy" src="assets/social/discord-invite.jpg" alt="Discord invite — You've been invited to join Omnipair — over the painted sky-and-sea hero"><div class="lockup-cap">Server invite page</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/social/discord-profile-preview.jpg" alt="Discord server card previews in dark and light themes"><div class="lockup-cap">Server icon &amp; banner preview</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/social/discord-welcome-preview.jpg" alt="Discord welcome banner preview"><div class="lockup-cap">Welcome banner</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/social/discord-server-preview.jpg" alt="Discord in-server banner preview"><div class="lockup-cap">In-server preview · top 28% is covered by the server name</div></div>
+        <div class="lockup-card" style="display:grid; grid-template-columns:auto 1fr; gap:0; align-items:center; background:var(--paper);"><img loading="lazy" src="assets/social/discord-icon-512.jpg" alt="Discord icon asset" style="width:120px; padding:1rem;"><img loading="lazy" src="assets/social/discord-banner-980x540.jpg" alt="Discord server banner asset" style="padding:1rem 1rem 1rem 0;"><div class="lockup-cap" style="grid-column:1/-1;">Icon 512×512 · Server banner 980×540</div></div>
+      </div>
+
+      <h4 class="sub">X / Twitter</h4>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/social/x-profile-previews.jpg" alt="X profile previews in dark and light themes, mobile and web"><div class="lockup-cap">Profile preview · @omnipair</div></div>
+        <div class="lockup-card" style="display:grid; grid-template-columns:auto 1fr; gap:0; align-items:center; background:var(--paper);"><img loading="lazy" src="assets/social/x-icon-800.jpg" alt="X icon asset" style="width:120px; padding:1rem;"><img loading="lazy" src="assets/social/x-banner-1500x500.jpg" alt="X banner asset" style="padding:1rem 1rem 1rem 0;"><div class="lockup-cap" style="grid-column:1/-1;">Icon 800×800 · Banner 1500×500</div></div>
+      </div>
+
+      <h4 class="sub">LinkedIn</h4>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/social/linkedin-preview.jpg" alt="LinkedIn company page preview — Blockchain Services, 2–10 employees"><div class="lockup-cap">Company page preview</div></div>
+        <div class="lockup-card" style="display:grid; grid-template-columns:auto 1fr; gap:0; align-items:center; background:var(--paper);"><img loading="lazy" src="assets/social/linkedin-icon-512.jpg" alt="LinkedIn icon asset" style="width:120px; padding:1rem;"><img loading="lazy" src="assets/social/linkedin-banner-1600x400.jpg" alt="LinkedIn banner asset" style="padding:1rem 1rem 1rem 0;"><div class="lockup-cap" style="grid-column:1/-1;">Icon 512×512 · Banner 1600×400</div></div>
+      </div>
+
+      <h4 class="sub">GitHub</h4>
+      <div class="lockup-grid">
+        <div class="lockup-card" style="display:grid; place-items:center; background:var(--paper);"><img loading="lazy" src="assets/social/github-preview.jpg" alt="GitHub organisation profile preview with the round gradient icon" style="max-height:360px; width:auto; padding:1rem;"><div class="lockup-cap" style="justify-self:stretch;">Organisation profile preview</div></div>
+        <div class="lockup-card" style="display:grid; place-items:center; background:var(--paper);"><img loading="lazy" src="assets/social/github-icon-512.jpg" alt="GitHub icon asset" style="max-height:360px; width:auto; padding:1rem;"><div class="lockup-cap" style="justify-self:stretch;">Icon 512×512</div></div>
+      </div>
+
+      <table class="spec-table">
+        <thead><tr><th>Platform</th><th>Asset</th><th>Size</th><th>File</th></tr></thead>
+        <tbody>
+          <tr><td>Discord</td><td>Server icon</td><td>512 × 512</td><td><a href="assets/downloads/social/Omnipair-discord-icon-512.png" download class="dl-get">png</a></td></tr>
+          <tr><td>Discord</td><td>Server banner</td><td>980 × 540</td><td><a href="assets/downloads/social/Omnipair-discord-banner-980x540.png" download class="dl-get">png</a></td></tr>
+          <tr><td>X / Twitter</td><td>Profile icon</td><td>800 × 800</td><td><a href="assets/downloads/social/Omnipair-x-icon-800.png" download class="dl-get">png</a></td></tr>
+          <tr><td>X / Twitter</td><td>Banner</td><td>1500 × 500</td><td><a href="assets/downloads/social/Omnipair-x-banner-1500x500.png" download class="dl-get">png</a></td></tr>
+          <tr><td>LinkedIn</td><td>Company icon</td><td>512 × 512</td><td><a href="assets/downloads/social/Omnipair-linkedin-icon-512.png" download class="dl-get">png</a></td></tr>
+          <tr><td>LinkedIn</td><td>Banner</td><td>1600 × 400</td><td><a href="assets/downloads/social/Omnipair-linkedin-banner-1600x400.png" download class="dl-get">png</a></td></tr>
+          <tr><td>GitHub</td><td>Organisation icon</td><td>512 × 512</td><td><a href="assets/downloads/social/Omnipair-github-icon-512.png" download class="dl-get">png</a></td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <div class="callout-label">Bundle</div>
+        <div class="callout-text">All seven files are in the <a href="assets/downloads/Omnipair-Social-Pack.zip" download style="color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor;">Social assets pack</a> — also in the Download Brand Kit panel.</div>
+      </div>
+    </section>
+
+    <section class="sect" id="merch">
+      <h2 class="sect-title">Merchandise &amp; Graphics <span class="done-pill">live</span></h2>
+      <p class="prose">The mark on objects and in the world — gradient apparel, quiet black caps and pins, engineered glass, and the painted skies as wallpapers and hero backgrounds.</p>
+      <div class="lockup-grid">
+        <div class="lockup-card"><img loading="lazy" src="assets/graphics/merch-tee-cap.jpg" alt="Gradient T-shirt in a glass display case, and a dark cap with the white asterisk"><div class="lockup-cap">Apparel · tee &amp; cap</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/graphics/crystal-collar.jpg" alt="A faceted black crystal with the glowing orange asterisk inside, and a shirt collar with a silver asterisk pin"><div class="lockup-cap">Engineered glass · collar pin</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/graphics/lanyard-robot.jpg" alt="A gradient lanyard badge on a jacket, and a glass robotic arm holding a chip etched with the asterisk"><div class="lockup-cap">Lanyard · chip</div></div>
+        <div class="lockup-card"><img loading="lazy" src="assets/graphics/canyon-mark.jpg" alt="Painted canyon scene with a translucent asterisk rising through the clouds"><div class="lockup-cap">Wallpaper · the mark in the world</div></div>
+        <div class="lockup-card" style="grid-column:1/-1;"><img loading="lazy" src="assets/graphics/sky-lockup-wide.jpg" alt="Wide painted sky over a turquoise sea with the horizontal Omnipair lockup"><div class="lockup-cap">Hero · horizontal lockup over the painted sky</div></div>
+      </div>
+      <div class="wip-block">
+        <div class="wip-block-title">Applications still to come</div>
+        <div class="wip-tags">
+          <span class="wip-tag">website</span><span class="wip-tag">product interface</span><span class="wip-tag">documentation</span><span class="wip-tag">presentation system</span><span class="wip-tag">events</span><span class="wip-tag">launch campaign</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="assets">
+      <div class="chapter-head"><span class="chapter-num">15</span></div>
+      <h1 class="chapter-title">asset library</h1>
+      <p class="chapter-intro">Official downloadable logo files. Naming, version control and governance rules to follow.</p>
+    </section>
+    <section class="sect" id="downloads">
+      <h2 class="sect-title">Logo Downloads <span class="done-pill">live</span></h2>
+      <p class="prose">Official files ship as bundles — horizontal lockup, vertical lockup, icon, app icons, social assets, fonts, colour tokens, or the complete logo pack. Use the <strong>Download Brand Kit</strong> panel at the bottom-left, available on every page: download one bundle at a time, or select several and export them together.</p>
+      <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="tile"><div class="tile-label">Logo</div><div class="tile-value">4 packs · 24 files</div><div class="tile-desc">Symbol, horizontal and vertical lockups — dark-white, dark-silver and gradient — in SVG, PNG and JPG.</div></div>
+        <div class="tile"><div class="tile-label">App icons &amp; social</div><div class="tile-value">2 packs · 10 files</div><div class="tile-desc">Leverage, Lending and Trade icons at 957px; Discord, X, LinkedIn and GitHub icons and banners at platform sizes.</div></div>
+        <div class="tile"><div class="tile-label">Type &amp; colour</div><div class="tile-value">Fonts · tokens · references</div><div class="tile-desc">M Saans VF and Aeonik VF; Omnipair-Colours.md with CSS variables; the two Midjourney reference images.</div></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">File naming</div>
+        <div class="callout-text">Omnipair-[Lockup]-[Colourway]-[Format] · SVG for product and web, PNG for decks and docs, JPG only where transparency isn't supported. Always use these files — never recreate or re-export the mark.</div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="wrap foot-inner">
+      <div class="foot-logo"><img src="assets/downloads/Omnipair-Horizontal-DarkSilver-SVG.svg" alt="omnipair" style="width:130px;"></div>
+      <div class="foot-meta">omnipair.fi · brand guidelines v3.1 · living document</div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  const links = [...document.querySelectorAll('.side-nav a')];
+  const ids = links.map(a => a.getAttribute('href').slice(1));
+  const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+
+  function spy() {
+    let current = sections[0];
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top <= 130) current = s;
+    }
+    if (!current) return;
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+
+  // lightbox
+  (function(){
+    const lb = document.createElement('div');
+    lb.className = 'lb';
+    lb.innerHTML = '<img alt=""><span class="lb-hint">click anywhere or press esc to close</span>';
+    document.body.appendChild(lb);
+    const lbImg = lb.querySelector('img');
+    document.querySelectorAll('.lockup-card img, .lockup-hero img').forEach(img => {
+      img.classList.add('zoomable');
+      img.addEventListener('click', e => {
+        e.preventDefault(); e.stopPropagation();
+        lbImg.src = img.src;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+  })();
+
+
+
+  // brand kit widget
+  (function(){
+    const kit = document.getElementById('kit');
+    if (!kit) return;
+    const toggle = document.getElementById('kitToggle');
+    const main = document.getElementById('kitMain');
+    const boxes = [...kit.querySelectorAll('input[type=checkbox]')];
+    toggle.addEventListener('click', () => {
+      kit.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', kit.classList.contains('open'));
+    });
+    document.addEventListener('click', e => {
+      if (!kit.contains(e.target)) kit.classList.remove('open');
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') kit.classList.remove('open'); });
+    boxes.forEach(b => b.addEventListener('change', () => {
+      b.closest('.kit-row').classList.toggle('sel', b.checked);
+      const n = boxes.filter(x => x.checked).length;
+      main.innerHTML = n > 0
+        ? `<span class="dl-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></span> Download selected (${n})`
+        : `<span class="dl-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg></span> Download Brand Kit`;
+    }));
+    main.addEventListener('click', () => {
+      const sel = boxes.filter(b => b.checked).map(b => b.dataset.zip);
+      const files = sel.length ? sel : ['Omnipair-Logo-Pack.zip'];
+      files.forEach((f, i) => setTimeout(() => {
+        const a = document.createElement('a');
+        a.href = 'assets/downloads/' + f;
+        a.download = f;
+        document.body.appendChild(a); a.click(); a.remove();
+      }, i * 400));
+    });
+  })();
+
+  // click-to-copy
+  (function(){
+    const t = document.createElement('div'); t.className = 'copy-toast'; document.body.appendChild(t);
+    let timer;
+    document.addEventListener('click', e => {
+      const elEl = e.target.closest('[data-copy-el]');
+      if (elEl) {
+        e.preventDefault();
+        const src = document.getElementById(elEl.dataset.copyEl);
+        if (src) navigator.clipboard.writeText(src.textContent.trim()).then(() => {
+          t.textContent = 'copied · global prompt';
+          t.classList.add('show');
+          clearTimeout(timer);
+          timer = setTimeout(() => t.classList.remove('show'), 1400);
+        });
+        return;
+      }
+      const el = e.target.closest('[data-copy]');
+      if (!el) return;
+      navigator.clipboard.writeText(el.dataset.copy).then(() => {
+        t.textContent = 'copied · ' + el.dataset.copy;
+        t.classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(() => t.classList.remove('show'), 1400);
+      });
+    });
+  })();
+</script>
+
+
+</body>
+</html>
+

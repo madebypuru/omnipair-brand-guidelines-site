@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101112" />
+    <meta name="description" content="The Omnipair brand. A shared reference for our identity, voice, colour, typography and visual world." />
+    <title>Omnipair — Brand guidelines</title>
+    <link rel="icon" type="image/png" href="./assets/opfavicon.png" />
+    <link rel="preload" href="./assets/fonts/MSaansVF.woff2" as="font" type="font/woff2" crossorigin />
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem('omnipair-theme')||'dark'}catch{}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="./?view=topics" aria-label="Omnipair brand guidelines home"><img src="./assets/downloads/Omnipair-Horizontal-DarkWhite-SVG.svg" alt="omnipair" width="138" height="26" /></a>
+      <div class="header-actions">
+        <button class="icon-button" id="copy-link" aria-label="Copy page link" title="Copy page link"></button>
+        <a class="icon-button" href="https://www.figma.com/design/JBWgIiO6PUwlgCN6lIgKT0/Omnipair-branding-by-37degree?node-id=257-2691&amp;t=OPmNKrr6dLvbn4xv-1" target="_blank" rel="noopener noreferrer" aria-label="Open the Figma brandbook" title="Figma brandbook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5C8 2 4 3 3 4v15c3-2 6-1 9 1 3-2 6-3 9-1V4c-1-1-5-2-9 1Zm0 0v15"/></svg></a>
+        <button class="icon-button" id="theme-toggle" aria-label="Switch to light theme" title="Switch to light theme"></button>
+        <span class="toolbar-separator"></span>
+        <button class="icon-button mobile-menu" id="menu-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"></button>
+        <button class="icon-button" id="download-open" aria-label="Open brand downloads" title="Download assets"></button>
+      </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop"></div>
+    <aside id="sidebar" class="sidebar" aria-label="Brand navigation"><nav id="navigation" aria-label="Brand guidelines"></nav><div class="sidebar-footer"><span>Omnipair · Brand guidelines</span><a href="https://omnipair.fi" target="_blank" rel="noopener noreferrer">omnipair.fi <span aria-hidden="true">↗</span></a></div></aside>
+    <div class="content-area">
+    <main id="main" tabindex="-1">
+      <div id="page"></div>
+      <footer class="page-footer"><span>One identity. Every expression.</span><a href="#main">Back to top ↑</a></footer>
+    </main>
+    </div>
+    <dialog id="download-dialog" class="download-dialog" aria-labelledby="download-title"><div class="dialog-header"><div><span class="eyebrow">THE ESSENTIALS</span><h2 id="download-title">Brand assets</h2></div><button class="icon-button close-dialog" aria-label="Close downloads"></button></div><p>Official files, ready for your next project.</p><div id="download-list"></div><p class="download-note">Use the supplied artwork. Keep the mark, proportions and colours intact.</p></dialog>
+    <dialog id="image-dialog" class="image-dialog" aria-label="Image preview"><button class="icon-button close-image" aria-label="Close image preview"></button><img alt="" /><p>Click outside the image or press Esc to close</p></dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
