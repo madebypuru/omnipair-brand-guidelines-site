@@ -2,6 +2,7 @@ name: Publish brand guidelines
 on:
   push:
     branches: [main]
+    paths-ignore: ['site-source.zip.part*']
   workflow_dispatch:
 permissions:
   contents: write
