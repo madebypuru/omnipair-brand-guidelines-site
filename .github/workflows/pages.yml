@@ -2,10 +2,9 @@ name: Publish brand guidelines
 on:
   push:
     branches: [main]
-    paths-ignore: ['site-source.zip.part*']
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 concurrency:
@@ -19,34 +18,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Expand initial source import
-        if: hashFiles('site-source.zip.part*') != ''
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import struct,zlib,zipfile
-          data=b''.join(p.read_bytes() for p in sorted(Path('.').glob('site-source.zip.part*')))
-          i=0
-          while data[i:i+4]==b'PK\x03\x04':
-              h=struct.unpack('<IHHHHHIIIHH',data[i:i+30])
-              n,e=h[-2:]; size=h[7]; start=i+30+n+e
-              if start+size>len(data): break
-              name=data[i+30:i+30+n].decode()
-              p=Path(name)
-              assert not p.is_absolute() and '..' not in p.parts
-              raw=data[start:start+size]
-              raw=zlib.decompress(raw,-15) if h[3]==8 else raw
-              assert zlib.crc32(raw)==h[6]
-              p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(raw)
-              i=start+size
-          with zipfile.ZipFile('source-remainder.zip') as z: z.extractall('.')
-          PY
-          rm site-source.zip.part* source-remainder.zip
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Expand site source and brand assets"
-          git push
       - uses: actions/setup-node@v4
         with:
           node-version: 22
