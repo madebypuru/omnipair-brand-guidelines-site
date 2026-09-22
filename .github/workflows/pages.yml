@@ -1,0 +1,44 @@
+name: Publish brand guidelines
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Expand initial source import
+        if: hashFiles('site-source.zip.part*') != ''
+        run: |
+          cat site-source.zip.part* > /tmp/site-source.zip
+          unzip -o /tmp/site-source.zip -d .
+          rm site-source.zip.part*
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Expand site source and brand assets"
+          git push
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Publish site
+        id: deployment
+        uses: actions/deploy-pages@v4
